@@ -19,10 +19,16 @@ class User(object):
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
-    	self.id = User(choice(usernames) or 'Durp')
-    	usernames.remove(self.id.name)
+    	if len(usernames) > 0:
+    		self.id = User(choice(usernames))
+    		usernames.remove(self.id.name)
+    	else:
+    		self.id = User('Guest {i}'.format(i=len(connections)))
+
     	connections.append(self)
+
         print 'new connection'
+
         self.write_message("There are currently {con} connections\n\n".format(con=len(connections)))
         
       
