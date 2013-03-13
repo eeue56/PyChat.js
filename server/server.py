@@ -10,12 +10,22 @@ connections = []
 
 usernames = ['Shauna', 'Tomuel', 'Darkok']
 
+
 class User(object):
 	def __init__(self, name):
 		self.name = name
 
 	def __str__(self):
 		return str(self.name)
+	
+	def release_name(self):
+		usernames.append(self.name)
+
+
+def send_message(message):
+	for con in connections:
+		con.write_message(message)
+
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
@@ -29,16 +39,26 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
         print 'new connection'
 
-        self.write_message("There are currently {con} connections\n\n".format(con=len(connections)))
+       	self.write_message("There are currently {con} connections\n\n".format(con=len(connections)))
         
+    def parse_nick(self, message):
+    	previous_name = self.id.name
+    	self.id.release_name()
+    	self.id = User(message[message.index('nick') + 4:].strip())
+      
+      	send_message('User {n} is now known as {nick}\n'.format(n=previous_name, nick=self.id.name))
       
     def on_message(self, message):
     	print message
-        for con in connections:
-        	con.write_message('{id} says: {mes}\n'.format(id=self.id.name, mes=message))
+    	
+    	if message.startswith('\\'):
+    		self.parse_nick(message)
+    		return 
+    		
+        send_message('{id} says: {mes}\n'.format(id=self.id.name, mes=message))
  
     def on_close(self):
-    	usernames.append(self.id.name)
+    	self.id.release_name()
     	connections.remove(self)
         print 'connection closed'
 
