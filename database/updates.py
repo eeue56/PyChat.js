@@ -1,14 +1,17 @@
 import sqlite3
 
-class database_connection:
-    __init__(self):
+class Conn(object):
+    def __init__(self):
         self.connection = sqlite3.connect()
 
     def insert_new_user(self, username):
-        self.connection.execute("INSERT INTO Users VALUES(?)", (username))
+        c = self.connection.cursor()
+	c.execute("INSERT INTO Users VALUES(?)", (username,))
 
-    def insert_new_message(self, username, roomName, sendTime):
-        if not sendTime:
-            self.connection.execute("INSERT INTO Messages VALUES(username = ?, roomName = ?)",(username, roomName))
+    def insert_new_message(self, username, room_name, send_time):
+
+	c = self.connnection.cursor()
+        if not send_time:
+            c.execute("INSERT INTO Messages VALUES(username = ?, room_name = ?)",(username, room_name))
         else:
-            self.connection.execute("INSERT INTO Messages VALUES(username = ? roomName = ? sendTime = ?)",(username, roomName, sendTime))
+            c.execute("INSERT INTO Messages VALUES(username = ? room_name = ? send_time = ?)",(username, room_name, send_time))
