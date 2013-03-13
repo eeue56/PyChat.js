@@ -32,6 +32,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         	con.write_message('{id} says: {mes}\n'.format(id=self.id.name, mes=message))
  
     def on_close(self):
+    	usernames.append(self.id.name)
     	connections.remove(self)
         print 'connection closed'
 
