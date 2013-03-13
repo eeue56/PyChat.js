@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WebSockets Hello World</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+      body {
+        text-align: center;
+        min-width: 500px;
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script>
+	  var ws;
+      $(document).ready(function () {
+ 
+          ws = new WebSocket("ws://astraldynamics.co.uk/ws");
+ 
+          ws.onmessage = function(evt) {$(t).append( evt.data)};
+ 
+          ws.onclose = function(evt) { $(t).append("Connection closed") };
+      });
+          
+      	  function d() {
+	 	    ws.send($(host).val());
+          };
+ 
+      	
+    </script>
+  </head>
+ 
+  <body>
+    <h1>WebSockets Hello World</h1>
+    <div>      
+      <label for="host">send message:</label>
+      <input type="text" id="host" value="" style="background:#ff0000;"/><br />
+      <input type="submit" id="open" onclick="d();"/>
+      <textarea id="t" cols="300" rows="300"></textarea>
+    </div>
+  </body>
+</html>
