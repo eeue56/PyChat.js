@@ -1,0 +1,9 @@
+body {
+    margin:0;
+    padding:0;
+}
+
+.test-div {
+    width:280px;
+    height:560px;
+}

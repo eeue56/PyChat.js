@@ -1,0 +1,74 @@
+.pyjs {
+    font-family:"Segoe UI",Calibri,"Myriad Pro",Myriad,"Trebuchet MS",Helvetica,Arial,sans-serif;
+    font-size: 10pt;
+}
+
+.pyjs-wrapper {
+    padding: 10px;
+}
+
+.pyjs-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+
+.pyjs-avatar {
+    width: 32px;
+    height: 32px;
+    float:left;
+}
+
+.pyjs-conversation-title {
+    margin-top: -16px;
+}
+
+.pyjs-conversation-header {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.pyjs-chat-window {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.pyjs-message-window {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    padding: 5px;
+}
+
+
+/* Themes */
+
+.pyjs-light .pyjs-container {
+    color: #999999;
+    background-color: #EFEFEF;
+}
+
+.pyjs-light .pyjs-conversation-header {
+    color: #999999;
+}
+
+.pyjs-light .pyjs-chat-window {
+    color: #999999;
+    background-color: #FFFFFF;
+}
+
+.pyjs-light .pyjs-message-window {
+    color: #999999;
+    background-color: #FFFFFF;
+}
