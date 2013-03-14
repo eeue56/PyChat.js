@@ -17,7 +17,7 @@ Errors:
 {
 	"service":0
 	"data": {
-		"logged_in":1/0
+		"logged_in":[1/0]
 	}
 }
 
