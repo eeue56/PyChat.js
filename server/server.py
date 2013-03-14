@@ -5,7 +5,7 @@ import tornado.web
 
 from random import choice
 
-from exceptions import RoomNotFoundException
+from server_exceptions import RoomNotFoundException
 from room import *
 
 import logging
