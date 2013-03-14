@@ -1,0 +1,38 @@
+JSON Template for WebSocket chat with Tornado
+
+FROM SERVER MESSAGES
+
+Services:
+	0 - Login
+	1 - Message from user
+
+Errors:
+	0 - Failed login
+		Error reasons:
+			0 - Authentication Error
+	1 - Message not delivered
+		Error reasons:
+			0 - Room closed
+
+{
+	"service":0
+	"data": {
+		"logged_in":1/0
+	}
+}
+
+{
+	"service":1
+	"data": {
+		"message":"Some message."
+		"username":"Some_Username"
+	}
+}
+
+{
+	"error":[code]
+	"data": {
+		"reason":[error reason]
+		"optional_message":"This is an optional error message"
+	}
+}
