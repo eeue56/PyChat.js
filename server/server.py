@@ -60,7 +60,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
                 self.parse_join(message)
             return 
             
-        self.send_to_all_rooms('{id} says: {mes}\n'.format(id=self.id, mes=message))
+        self._send_to_all_rooms('{id} says: {mes}\n'.format(id=self.id, mes=message))
  
     def on_close(self):
         logging.info('User {id} disconnected!'.format(id=self.id))
@@ -72,9 +72,9 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         print 'connection closed'
 
 
-	def send_to_all_rooms(self, message):
-		for room in self._rooms:
-			room.send_message(message)
+    def _send_to_all_rooms(self, message):
+        for room in self._rooms:
+            room.send_message(message)
 
 
     def parse_nick(self, message):
