@@ -68,6 +68,7 @@ FROM CLIENT MESSAGES
     "command":2
     "data":{
         "username":"some_username"
+        "room":"room_name_to_send_the_message_to"
         "message":"the users message."
     }
 }
