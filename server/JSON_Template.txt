@@ -27,11 +27,18 @@ FROM SERVER MESSAGES
 }
 
 {
+<<<<<<< HEAD
     "service":1
     "data": {
         "message":"Some message."
         "username":"Some_Username"
     }
+=======
+	"service":0
+	"data": {
+		"logged_in":[1/0]
+	}
+>>>>>>> e4758f5d701a9704ddae4e59e357d6b698b79fc8
 }
 
 {
