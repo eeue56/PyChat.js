@@ -47,7 +47,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
         logging.info('User with name {name} joined!'.format(name=self.id))
 
-        self.write_message('Connected successfully')
+        self.write_message('Connected successfully\n')
 
     def on_message(self, message):
         logging.info('Message {mes} recieved from user {id}'.format(mes=message, 
@@ -69,7 +69,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         for room in self._rooms:
             room.remove_user(self)
 
-        print 'connection closed'
+        self.write_message('Connection closed')
 
 
     def _send_to_all_rooms(self, message):

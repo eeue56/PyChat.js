@@ -27,4 +27,4 @@ class Room(object):
             handler.write_message(message)
 
     def welcome(self, user):
-        self.send_message('Please welcome {name} to the server!'.format(name=user.id))
+        self.send_message('Please welcome {name} to the server!\n'.format(name=user.id))
