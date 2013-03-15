@@ -36,7 +36,7 @@ def join_room(room_name, handler):
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
-
+        print 'new connection'
         if len(usernames) > 0:
             self.id = User(choice(usernames))
             usernames.remove(self.id.name)
@@ -60,7 +60,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
                 self.parse_join(message)
             return 
             
-        send_message('{id} says: {mes}\n'.format(id=self.id, mes=message))
+        self.send_to_all_rooms('{id} says: {mes}\n'.format(id=self.id, mes=message))
  
     def on_close(self):
         logging.info('User {id} disconnected!'.format(id=self.id))
@@ -72,6 +72,11 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         print 'connection closed'
 
 
+	def send_to_all_rooms(self, message):
+		for room in self._rooms:
+			room.send_message(message)
+
+
     def parse_nick(self, message):
         logging.info('Parsing nick...')
         previous_name = self.id.name
@@ -79,7 +84,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         self.id = User(message[message.index('nick') + 4:].strip())
         
         logging.debug('Nick set as {name}'.format(name=self.id))
-        send_message('User {n} is now known as {nick}\n'.format(n=previous_name, nick=self.id.name))
+        self._send_to_all_rooms('User {n} is now known as {nick}\n'.format(n=previous_name, nick=self.id.name))
       
     def parse_join(self, message):
         logging.info('Parsing join...')
