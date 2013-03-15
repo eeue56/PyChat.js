@@ -3,11 +3,12 @@ JSON Template for WebSocket chat with Tornado
 Services:
     0 - Login
     1 - Message from user
-    3 - Pong
+    2 - Pong
 
 Commands:
     0 - Join
     1 - Ping
+    2 - send message
 
 Errors:
     0 - Failed login
@@ -27,22 +28,15 @@ FROM SERVER MESSAGES
 }
 
 {
-<<<<<<< HEAD
     "service":1
     "data": {
         "message":"Some message."
         "username":"Some_Username"
     }
-=======
-	"service":0
-	"data": {
-		"logged_in":[1/0]
-	}
->>>>>>> e4758f5d701a9704ddae4e59e357d6b698b79fc8
 }
 
 {
-    "service":3
+    "service":2
 }
 
 {
@@ -67,5 +61,13 @@ FROM CLIENT MESSAGES
     "command":1
     "data":{
         "username":"some_username"
+    }
+}
+
+{
+    "command":2
+    "data":{
+        "username":"some_username"
+        "message":"the users message."
     }
 }
