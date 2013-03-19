@@ -77,7 +77,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         print 'new connection'
         if len(usernames) > 0:
             id_ = User(choice(usernames))
-            usernames.remove(self.id.name)
+            usernames.remove(id_.name)
         else:
             id_ = User('Guest {i}'.format(i=len(connections)))
 
