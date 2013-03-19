@@ -92,10 +92,10 @@ class WSHandler(tornado.websocket.WebSocketHandler):
                 self.parse_join(message)
             return 
             
-        self._send_to_all_rooms('{id} says: {mes}\n'.format(id=self.id, mes=message))
+        self._send_to_all_rooms('{id} says: {mes}\n'.format(id=self.conn.id, mes=message))
  
     def on_close(self):
-        logging.info('User {id} disconnected!'.format(id=self.id))
+        logging.info('User {id} disconnected!'.format(id=self.conn.id))
         self.id.release_name()
         
         for room in self._rooms:
