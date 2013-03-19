@@ -31,15 +31,21 @@ class ChatConnection(object):
         self.id = username
         self._rooms = []
         self.handler = handler
+        self.parse_join('join Darkness')
+        self.write_message('hello')
 
     def write_message(self, message):
+        logging.debug("Sending message {mes} to {usr}".format(mes=message, usr=self.id))
         self.handler.write_message(message)
 
-    def join_room(self, room_name):
+    def join_room(self, room_name):        
+        logging.debug('Joining room {ro}'.format(ro=room_name))
+
         for room in rooms:
             if room.name == room_name:
                 room.add_user(self)
-                return room
+                self._rooms.append(room)
+                return
         raise RoomNotFoundException('No such room as {name}!'.format(name=room_name))
 
     def _send_to_all_rooms(self, message):
@@ -62,7 +68,7 @@ class ChatConnection(object):
         logging.debug('Room name set as {name}'.format(name=room_name))
 
         try:
-            room = join_room(room_name, self)
+            room = self.join_room(room_name)
             self._rooms.append(room)
             room.welcome(self)
         except RoomNotFoundException:
@@ -85,7 +91,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         else:
             id_ = User('Guest {i}'.format(i=len(connections)))
 
-        self.conn = ChatConnection(id_)
+        self.conn = ChatConnection(id_, self)
 
         logging.info('User with name {name} joined!'.format(name=id_))
 
@@ -122,7 +128,11 @@ application = tornado.web.Application([
 ])
 
 if __name__ == "__main__":
-    logging.basicConfig(filename='server.log', level=logging.DEBUG)
+    from time import time
+    logging.basicConfig(filename='server.log', level=logging.DEBUG, format="%(asctime)s;  %(levelname)s;  %(message)s")
+
+    logging.info('\n\n\n==========================\nStarted program')
+    
 
     logging.debug('Listening on port 8000...')
     application.listen(8000)
