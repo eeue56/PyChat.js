@@ -77,7 +77,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
         self.conn = ChatConnection(id_)
 
-        logging.info('User with name {name} joined!'.format(name=self.id))
+        logging.info('User with name {name} joined!'.format(name=id_))
 
         self.write_message('Connected successfully\n')
 
