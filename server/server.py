@@ -32,7 +32,6 @@ class ChatConnection(object):
         self._rooms = []
         self.handler = handler
         self.parse_join('join Darkness')
-        self.write_message('hello')
 
     def write_message(self, message):
         logging.debug("Sending message {mes} to {usr}".format(mes=message, usr=self.id))
@@ -44,8 +43,7 @@ class ChatConnection(object):
         for room in rooms:
             if room.name == room_name:
                 room.add_user(self)
-                self._rooms.append(room)
-                return
+                return room
         raise RoomNotFoundException('No such room as {name}!'.format(name=room_name))
 
     def _send_to_all_rooms(self, message):
@@ -85,6 +83,9 @@ class ChatConnection(object):
 class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
         print 'new connection'
+
+        self.write_message('Connected successfully\n')
+
         if len(usernames) > 0:
             id_ = User(choice(usernames))
             usernames.remove(id_.name)
@@ -94,8 +95,6 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         self.conn = ChatConnection(id_, self)
 
         logging.info('User with name {name} joined!'.format(name=id_))
-
-        self.write_message('Connected successfully\n')
 
     def on_message(self, message):
         logging.info('Message {mes} recieved from user {id}'.format(mes=message, 
