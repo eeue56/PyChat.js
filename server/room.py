@@ -16,7 +16,7 @@ class Room(object):
 
     @property
     def user_names(self):
-        return [user.id for user in self.users]
+        return [user.id.name for user in self.users]
 
     @property
     def amount_of_users_connected(self):
@@ -28,4 +28,6 @@ class Room(object):
             handler.write_message(message)
 
     def welcome(self, user):
-        self.send_message('Please welcome {name} to the server!\n'.format(name=user.id))
+        self.send_message('Please welcome {name} to the server!\nThere are currently {i} users online -\n {r}\n'.format(name=user.id, 
+                          i=self.amount_of_users_connected, 
+                          r=' '.join(self.user_names)))
