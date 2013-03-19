@@ -23,6 +23,7 @@ class Room(object):
         return len(self.users)
 
     def send_message(self, message):
+        print 'here'
         for handler in self.users:
             handler.write_message(message)
 
