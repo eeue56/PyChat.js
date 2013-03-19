@@ -27,9 +27,13 @@ class User(object):
 
 
 class ChatConnection(object):
-    def __init__(self, username):
+    def __init__(self, username, handler):
         self.id = username
         self._rooms = []
+        self.handler = handler
+
+    def write_message(self, message):
+        self.handler.write_message(message)
 
     def join_room(self, room_name):
         for room in rooms:
@@ -65,7 +69,7 @@ class ChatConnection(object):
             logging.debug('Room not found!')
             self.write_message('No such room!\n')
 
-    def on_close(self):
+    def close(self):
         self.id.release_name()
         
         for room in self._rooms:
@@ -89,20 +93,20 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
     def on_message(self, message):
         logging.info('Message {mes} recieved from user {id}'.format(mes=message, 
-            id=self.id))
+            id=self.conn.id))
 
         if message.startswith('\\'):
             if 'nick' in message[:7]:
-               self.parse_nick(message)
+               self.conn.parse_nick(message)
             elif 'join' in message[:7]:
-                self.parse_join(message)
+                self.conn.parse_join(message)
             return 
             
-        self._send_to_all_rooms('{id} says: {mes}\n'.format(id=self.conn.id, mes=message))
+        self.conn._send_to_all_rooms('{id} says: {mes}\n'.format(id=self.conn.id, mes=message))
  
     def on_close(self):
         logging.info('User {id} disconnected!'.format(id=self.conn.id))
-        
+        self.conn.close()
 
         self.write_message('Connection closed')
 
