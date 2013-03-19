@@ -110,7 +110,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         self.conn._send_to_all_rooms('{id} says: {mes}\n'.format(id=self.conn.id, mes=message))
  
     def on_close(self):
-        logging.info('User {id} disconnected!'.format(id=self.conn.id))
+        logging.info('User {id} disconnected!'.format(id=self.conn))
         self.conn.close()
 
         self.write_message('Connection closed')
