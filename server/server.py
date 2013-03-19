@@ -26,24 +26,56 @@ class User(object):
         usernames.append(self.name)
 
 
-def join_room(room_name, handler):
-    for room in rooms:
-        if room.name == room_name:
-            room.add_user(handler)
-            return room
-    raise RoomNotFoundException('No such room as {name}!'.format(name=room_name))
+class ChatConnection(object):
+    def __init__(self, username):
+        self.id = username
+        self._rooms = []
+
+    def join_room(self, room_name, handler):
+        for room in rooms:
+            if room.name == room_name:
+                room.add_user(handler)
+                return room
+        raise RoomNotFoundException('No such room as {name}!'.format(name=room_name))
+
+    def _send_to_all_rooms(self, message):
+        for room in self._rooms:
+            room.send_message(message)
+
+    def parse_nick(self, message):
+        logging.info('Parsing nick...')
+        previous_name = self.id.name
+        self.id.release_name()
+        self.id = User(message[message.index('nick') + 4:].strip())
+        
+        logging.debug('Nick set as {name}'.format(name=self.id))
+        self._send_to_all_rooms('User {n} is now known as {nick}\n'.format(n=previous_name, nick=self.id.name))
+      
+    def parse_join(self, message):
+        logging.info('Parsing join...')
+        room_name = message[message.index('join') + 4:].strip()
+
+        logging.debug('Room name set as {name}'.format(name=room_name))
+
+        try:
+            room = join_room(room_name, self)
+            self._rooms.append(room)
+            room.welcome(self)
+        except RoomNotFoundException:
+            logging.debug('Room not found!')
+            self.write_message('No such room!\n')
 
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
         print 'new connection'
         if len(usernames) > 0:
-            self.id = User(choice(usernames))
+            id_ = User(choice(usernames))
             usernames.remove(self.id.name)
         else:
-            self.id = User('Guest {i}'.format(i=len(connections)))
+            id_ = User('Guest {i}'.format(i=len(connections)))
 
-        self._rooms = []
+        self.conn = ChatConnection(id_)
 
         logging.info('User with name {name} joined!'.format(name=self.id))
 
@@ -72,37 +104,14 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         self.write_message('Connection closed')
 
 
-    def _send_to_all_rooms(self, message):
-        for room in self._rooms:
-            room.send_message(message)
-
-
-    def parse_nick(self, message):
-        logging.info('Parsing nick...')
-        previous_name = self.id.name
-        self.id.release_name()
-        self.id = User(message[message.index('nick') + 4:].strip())
-        
-        logging.debug('Nick set as {name}'.format(name=self.id))
-        self._send_to_all_rooms('User {n} is now known as {nick}\n'.format(n=previous_name, nick=self.id.name))
-      
-    def parse_join(self, message):
-        logging.info('Parsing join...')
-        room_name = message[message.index('join') + 4:].strip()
-
-        logging.debug('Room name set as {name}'.format(name=room_name))
-
-        try:
-            room = join_room(room_name, self)
-            self._rooms.append(room)
-            room.welcome(self)
-        except RoomNotFoundException:
-            logging.debug('Room not found!')
-            self.write_message('No such room!')
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write('wut?')
 
 
 application = tornado.web.Application([
     (r"/ws", WSHandler),
+    (r"/wst", MainHandler),
 ])
 
 if __name__ == "__main__":
