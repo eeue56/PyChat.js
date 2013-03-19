@@ -31,10 +31,10 @@ class ChatConnection(object):
         self.id = username
         self._rooms = []
 
-    def join_room(self, room_name, handler):
+    def join_room(self, room_name):
         for room in rooms:
             if room.name == room_name:
-                room.add_user(handler)
+                room.add_user(self)
                 return room
         raise RoomNotFoundException('No such room as {name}!'.format(name=room_name))
 
@@ -64,6 +64,12 @@ class ChatConnection(object):
         except RoomNotFoundException:
             logging.debug('Room not found!')
             self.write_message('No such room!\n')
+
+    def on_close(self):
+        self.id.release_name()
+        
+        for room in self._rooms:
+            room.remove_user(self)
 
 
 class WSHandler(tornado.websocket.WebSocketHandler):
@@ -96,10 +102,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
  
     def on_close(self):
         logging.info('User {id} disconnected!'.format(id=self.conn.id))
-        self.id.release_name()
         
-        for room in self._rooms:
-            room.remove_user(self)
 
         self.write_message('Connection closed')
 
