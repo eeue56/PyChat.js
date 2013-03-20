@@ -1,7 +1,6 @@
 JSON Template for WebSocket chat with Tornado
 
 Services:
-    0 - Login
     1 - Message from user
     2 - Pong
 
@@ -11,23 +10,11 @@ Commands:
     2 - send message
 
 Errors:
-    0 - Failed login
-        Error reasons:
-            0 - Authentication Error
     1 - Message not delivered
         Error reasons:
             0 - Room closed
 
 FROM SERVER MESSAGES
-
- ----NOT NEEDED---
-{
-    "service":0
-    "data": {
-        "logged_in":1/0
-    }
-}
- ----NOT NEEDED---
 
 {
     "service":1
