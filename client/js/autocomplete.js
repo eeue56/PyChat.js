@@ -13,32 +13,31 @@ function autocomplete(input, userlist) {
   var toComplete = text.slice(text.lastIndexOf(" ") + 1);
 
   if (toComplete.value.length == toComplete.selectionStart && toComplete.value.length == toComplete.selectionEnd) {
-    var suggestionss = []
+    var suggestions = []
     for (var i=0; i < userlist.length; i++) {
       if (userlist[i].indexOf(toComplete.value) == 0 && userlist[i].length > toComplete.value.length)
-        suggestionss.push(userlist[i])
+        suggestions.push(userlist[i])
     }
 
-    if (suggestionss.length > 0) {
-      if (suggestionss.length == 1) input.value = suggestionss[0]
-      else toComplete.value = longestInCommon(suggestionss, toComplete.value.length)
+    if (suggestions.length > 0) {
+      if (suggestions.length == 1) input.value = suggestions[0]
+      else toComplete.value = longestInCommon(suggestions, toComplete.value.length)
       return true
     }
   }
   return false
 }
-
-function longestInCommon(suggestionss, index) {
+function longestInCommon(suggestions, index) {
   var i, ch, memo
   do {
     memo = null
-    for (i=0; i < suggestionss.length; i++) {
-      ch = suggestionss[i].charAt(index)
+    for (i=0; i < suggestions.length; i++) {
+      ch = suggestions[i].charAt(index)
       if (!ch) break
       if (!memo) memo = ch
       else if (ch != memo) break
     }
-  } while (i == suggestionss.length && ++index)
+  } while (i == suggestions.length && ++index)
 
-  return suggestionss[0].slice(0, index)
+  return suggestions[0].slice(0, index)
 }
