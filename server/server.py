@@ -10,6 +10,9 @@ from room import *
 
 import logging
 
+from json import loads, dumps
+
+
 rooms = [Room('Darkness')]
 
 usernames = ['Shauna', 'Tomuel', 'Darkok']
@@ -79,6 +82,8 @@ class ChatConnection(object):
         for room in self._rooms:
             room.remove_user(self)
 
+    def pong(self):
+        self.handler.write_message('{"service":2}')
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
@@ -106,6 +111,13 @@ class WSHandler(tornado.websocket.WebSocketHandler):
             elif 'join' in message[:7]:
                 self.conn.parse_join(message)
             return 
+
+        if 'command' in message:
+            m = loads(message)
+
+            if m['command'] == 1:
+                self.conn.pong()
+            return
             
         self.conn._send_to_all_rooms('{id} says: {mes}\n'.format(id=self.conn.id, mes=message))
  
