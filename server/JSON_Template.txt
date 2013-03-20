@@ -20,12 +20,14 @@ Errors:
 
 FROM SERVER MESSAGES
 
+ ----NOT NEEDED---
 {
     "service":0
     "data": {
         "logged_in":1/0
     }
 }
+ ----NOT NEEDED---
 
 {
     "service":1
