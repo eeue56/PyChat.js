@@ -83,6 +83,7 @@ class ChatConnection(object):
             room.remove_user(self)
 
     def pong(self):
+        logging.info('Sending pong..')
         self.handler.write_message('{"service":2}')
 
 class WSHandler(tornado.websocket.WebSocketHandler):
@@ -113,6 +114,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
             return 
 
         if 'command' in message:
+            logging.info('command recieved ' + message)
             m = loads(message)
 
             if m['command'] == 1:
