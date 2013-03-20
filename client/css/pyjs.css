@@ -1,74 +1,145 @@
-.pyjs {
+.pyjs-wrapper {
     font-family:"Segoe UI",Calibri,"Myriad Pro",Myriad,"Trebuchet MS",Helvetica,Arial,sans-serif;
     font-size: 10pt;
-}
-
-.pyjs-wrapper {
+    width: auto;
+    height: auto;
     padding: 10px;
 }
 
 .pyjs-container {
-    margin-left: auto;
-    margin-right: auto;
     width: auto;
     height: auto;
     padding: 10px;
+    overflow: hidden;
 }
 
 .pyjs-avatar {
     width: 32px;
     height: 32px;
-    float:left;
+    float: left;
 }
 
-.pyjs-conversation-title {
-    margin-top: -16px;
+.pyjs-conversation-name {
+    margin-top: 6px;
+    margin-left: 46px;
+    overflow: hidden;
 }
 
 .pyjs-conversation-header {
-    margin-left: auto;
-    margin-right: auto;
     width: auto;
     height: auto;
+    padding: 0px;
     margin-bottom: 10px;
-    padding: 5px;
+    overflow: hidden;
 }
 
-.pyjs-chat-window {
-    margin-left: auto;
-    margin-right: auto;
+.pyjs-conversation {
     width: auto;
-    height: auto;
+    min-height: 50px;
+    max-height: 500px;
+    padding: 5px;
     margin-bottom: 10px;
-    padding: 5px;
 }
 
-.pyjs-message-window {
-    margin-left: auto;
-    margin-right: auto;
+.pyjs-conversation-footer {
     width: auto;
     height: auto;
+    padding: 0px;
+}
+
+.pyjs-conversation-message {
+    width: 100%;
+    max-height: 200px;
     padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+    border:none;
 }
 
-
-/* Themes */
-
-.pyjs-light .pyjs-container {
-    color: #999999;
-    background-color: #EFEFEF;
+.pyjs-conversation-send {
+    width: 64px;
+    min-height: 24px;
+    position: relative;
+    float: right;
+    text-align: center;
+    padding-top:3px;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-.pyjs-light .pyjs-conversation-header {
-    color: #999999;
+/* Light Theme */
+
+.light .pyjs-container {
+    background-color: #EAEAEA;
 }
 
-.pyjs-light .pyjs-chat-window {
-    color: #999999;
-    background-color: #FFFFFF;
+.light .pyjs-avatar {
+    background-color: #E3E3E3;
 }
 
-.pyjs-light .pyjs-message-window {
-    color: #999999;
-    background-color: #FFFFFF;
+.light .pyjs-conversation-name {
+    color: #AAA;
+}
+
+.light .pyjs-conversation-header {
+    color: #AAA;
+}
+
+.light .pyjs-conversation {
+    background-color: #FFF;
+    color: #AAA;
+}
+
+.light .pyjs-conversation-message {
+    background-color: #FFF;
+    /*border: 1px solid #CCC;*/
+    color: #AAA;
+}
+
+.light .pyjs-conversation-footer {
+    color: #AAA;
+}
+
+.light .pyjs-conversation-send {
+    background-color: #E3E3E3;
+    color: #AAA;
+}
+
+/* Dark Theme */
+
+.dark .pyjs-container {
+    background-color: #555;
+}
+
+.dark .pyjs-avatar {
+    background-color: #444;
+}
+
+.dark .pyjs-conversation-name {
+    color: #999;
+}
+
+.dark .pyjs-conversation-header {
+    color: #AAA;
+}
+
+.dark .pyjs-conversation {
+    background-color: #666;
+    color: #999;
+}
+
+.dark .pyjs-conversation-message {
+    background-color: #666;
+    color: #999;
+    /*border: 1px solid #444;*/
+}
+
+.dark .pyjs-conversation-footer {
+    color: #AAA;
+}
+
+.dark .pyjs-conversation-send {
+    background-color: #444;
+    color: #999;
 }

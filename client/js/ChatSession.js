@@ -1,10 +1,10 @@
 var ChatSession = Class.extend({
     init: function (settings) {
-        this.id = settings.id;
-        this.messages = settings.messages;
-        this.users = settings.users;
-        this.html = settings.html;
-    };
+        this.messages = settings.messages; // store messages
+        this.users = settings.users; // array of users
+        this.html = settings.html; // the location of the chat element
+        this.room = settings.room; // the room object
+        this.me = settings.me;  // a reference to our own (authenticated) user.
     },
     addUser: function (user) {
         if(user) {
@@ -20,5 +20,16 @@ var ChatSession = Class.extend({
             }
         }
     },
+    send: function (data) {
+        // send a message down the socket
+        me.socket.send(data);
+    },
+    recieve: me.socket.onmessage = function (event) {
+        var data = event.data;
+        // do some shizzle with this data
+    },
+    ping: function () {
         
+        me.socket.send(data);
+    }
 });

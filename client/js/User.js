@@ -1,8 +1,12 @@
 var User = Class.extend({
-    init: function(id, name, avatar) {
-        this.id = id;
-        this.name = name;
-        this.avatar = avatar;
+    init: function(settings) {
+        this.id = settings.id;
+        this.name = settings.name;
+        this.avatar = settings.avatar;
+        this.socket = null;
     },
+    setSocket: function (ws) { 
+        this.socket = ws;
+    }
         
 });

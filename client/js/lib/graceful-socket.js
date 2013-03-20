@@ -12,12 +12,9 @@
  * OPTIONS
  * -----------------------------------------------------------------------------
  * 
- * {Number}		fallbackOpenDelay		number of ms to delay simulated open 
- * 										event for fallback
- * {Number}		fallbackPollInterval	number of ms between requests for 
- * 										fallback polling
- * {Object}		fallbackPollParams		optional params to pass with each poll 
- * 										requests
+ * {Number}    fallbackOpenDelay    number of ms to delay simulated open event for fallback
+ * {Number}    fallbackPollInterval    number of ms between requests for fallback polling
+ * {Object}    fallbackPollParams    optional params to pass with each poll requests
  * 
  * EXAMPLES
  * -----------------------------------------------------------------------------

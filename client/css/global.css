@@ -1,9 +1,4 @@
 body {
-    margin:0;
-    padding:0;
-}
-
-.test-div {
-    width:280px;
-    height:560px;
+    font-family:"Segoe UI",Calibri,"Myriad Pro",Myriad,"Trebuchet MS",Helvetica,Arial,sans-serif;
+    width: 50%;
 }

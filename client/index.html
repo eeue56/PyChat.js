@@ -3,36 +3,76 @@
 <html>
 
     <head>
-        <link rel="stylesheet" type="text/css" href="css/global.css" />
-        <link rel="stylesheet" type="text/css" href="css/pyjs.css" />
+        <link rel="stylesheet" href="css/pyjs.css" type="text/css" />
+        <link rel="stylesheet" href="css/global.css" type="text/css" />
     </head>
 
     <body>
-        <div class="test-div">
-            <div class="pyjs-wrapper pyjs-light pyjs">
-                <div class="pyjs-container">
 
-	                <div class="pyjs-conversation-header">
-	                   <img class="pyjs-avatar" src="" alt="" />
-	                   <div class="pyjs.conversation-title">Conversation Name</div>
-                    </div>
+        <div class="pyjs-wrapper light">
 
-	                <div class="pyjs-chat-window">
-		                Chat Window
-                    </div>
+            <div class="pyjs-container">
 
-		            <div class="pyjs-message-window">
-                        Message Window
-                    </div>
+               <div class="pyjs-conversation-header">
 
-                </div>
-            </div>
+                   <div class="pyjs-avatar"></div>
+                   <div class="pyjs-conversation-name">Conversation Name</div>
+
+               </div>
+
+               <div class="pyjs-conversation">
+                   Messages
+               </div>
+
+               <div class="pyjs-conversation-footer">
+               
+                   <div contenteditable="true" class="pyjs-conversation-message">
+                       Enter Message
+                   </div>
+                   <a class="pyjs-conversation-send" href="index.html">Send</a>
+                   
+               </div>
+
+           </div>
+
         </div>
 
-        <!-- Load Scripts -->
+        <div class="pyjs-wrapper dark">
+
+            <div class="pyjs-container">
+
+                <div class="pyjs-conversation-header">
+
+                    <div class="pyjs-avatar"></div>
+                    <div class="pyjs-conversation-name">Conversation Name</div>
+
+                </div>
+
+                <div class="pyjs-conversation">
+                    Messages
+                </div>
+
+                <div class="pyjs-conversation-footer">
+                    <div placeholder="Message" contenteditable="true" class="pyjs-conversation-message">
+                        Enter Message
+                    </div>
+                    <a class="pyjs-conversation-send" href="index.html">Send</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Load Scripts Here -->
+
         <script type="text/javascript" src="js/lib/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="js/lib/graceful-socket.js"></script>
         <script type="text/javascript" src="js/lib/class.js"></script>
+        <script type="text/javascript" src="js/Message.js"></script>
+        <script type="text/javascript" src="js/User.js"></script>
+        <script type="text/javascript" src="js/ChatSession"></script>
+        <script type="text/javascript" src="js/join.js"></script>
     </body>
 
 </html>
