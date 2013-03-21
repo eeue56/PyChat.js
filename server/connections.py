@@ -3,12 +3,13 @@ from room import Room
 
 rooms = [Room('Darkness')]
 
+
 class ChatConnection(object):
     def __init__(self, username, handler):
         self.id = username
         self._rooms = {}
         self.handler = handler
-        self.parse_join('join Darkness')
+        self.join_room('Darkness')
 
     def write_message(self, message):
         logging.debug("Sending message {mes} to {usr}".format(mes=message, usr=self.id))

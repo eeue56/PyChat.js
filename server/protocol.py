@@ -1,11 +1,5 @@
 from json import dumps, loads
 
-services = {1 : create_message,
-            2 : create_pong,
-            3 : create_userlist,
-            4 : create_roomlist,
-            5 : create_connect,
-            6 : create_disconnect}
 
 requests = {0 : 'join',
             1 : 'ping',
@@ -37,6 +31,12 @@ def get_service(message):
 def get_data(message):
     return loads(message)['data']
 
+services = {1 : create_message,
+            2 : create_pong,
+            3 : create_userlist,
+            4 : create_roomlist,
+            5 : create_connect,
+            6 : create_disconnect}
 
 def __test():
     assert loads(create_message('Noah', 'hi')) == {"service":1, "data":{"message":"hi", "username":"Noah"} }
