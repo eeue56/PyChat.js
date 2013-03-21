@@ -74,7 +74,10 @@
     }
 #### 3. Get Userlist
     {
-        "request": 3
+        "request": 3,
+        "data" : { 
+        	"room" : "room_name"
+        }
     }
 #### 4. Get RoomList
     {
