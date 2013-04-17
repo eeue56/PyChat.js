@@ -159,3 +159,15 @@
 }
 
 /* Light Theme - Disabled */
+
+.light .disabled .pyjs-coversation-send {
+    color: #FFF;
+}
+
+.light .disabled .pyjs-conversation-message {
+    color: #CCC;
+}
+
+.light .disabled .pyjs-conversation {
+    color: #CCC;
+}
