@@ -1,4 +1,7 @@
+import logging
+
 from protocol import create_message
+
 
 class Room(object):
 
@@ -26,12 +29,14 @@ class Room(object):
 
     def send_message(self, message):
         for handler in self.users:
+            logging.info('Handler: ' + str(handler))
             handler.write_message(message)
 
     def __str__(self):
         return self.name
 
     def welcome(self, user):
+
         self.send_message(create_message('RoomServer', 'Please welcome {name} to the server!\nThere are currently {i} users online -\n {r}\n'.format(name=user.id, 
                           i=self.amount_of_users_connected, 
                           r=' '.join(self.user_names))))

@@ -39,9 +39,10 @@ class WSHandler(tornado.websocket.WebSocketHandler):
             id_ = User(choice(usernames))
             usernames.remove(id_.name)
         else:
-            id_ = User('Guest {i}'.format(i=len(connections)))
+            id_ = User('Guest {i}'.format(choice('abcdefgjklmnopqrsty')))
 
-        self.parser = Parser(ChatConnection(id_, self))
+        self.connection = ChatConnection(id_, self)
+        self.parser = Parser(self.connection)
 
         logging.info('User with name {name} joined!'.format(name=id_))
 
@@ -51,12 +52,9 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
         self.parser.parse_message(message)
     
- 
     def on_close(self):
         logging.info('User {id} disconnected!'.format(id=self.parser.connection.id))
-        self.conn.close()
-
-        self.write_message('Connection closed')
+        self.connection.close()
 
 
 class MainHandler(tornado.web.RequestHandler):

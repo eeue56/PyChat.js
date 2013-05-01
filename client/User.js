@@ -8,5 +8,4 @@ var User = Class.extend({
     setSocket: function (ws) { 
         this.socket = ws;
     }
-        
 });

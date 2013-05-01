@@ -38,7 +38,7 @@ class ChatConnection(object):
 
     def close(self):
         self.id.release_name()
-        for room in self._rooms:
+        for room in self._rooms.values():
             room.remove_user(self)
 
     @property

@@ -143,3 +143,31 @@
     background-color: #444;
     color: #999;
 }
+
+/* Dark Theme - Disabled */
+
+.dark .disabled .pyjs-conversation-send {
+    color: #222;
+}
+
+.dark .disabled .pyjs-conversation-message {
+    color: #444;
+}
+
+.dark .disabled .pyjs-conversation {
+    color: #444
+}
+
+/* Light Theme - Disabled */
+
+.light .disabled .pyjs-coversation-send {
+    color: #FFF;
+}
+
+.light .disabled .pyjs-conversation-message {
+    color: #CCC;
+}
+
+.light .disabled .pyjs-conversation {
+    color: #CCC;
+}

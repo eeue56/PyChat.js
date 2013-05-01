@@ -6,7 +6,4 @@ $(document).ready(function () {
         },
         user: new User()
     });
-
-    
-    
 });
