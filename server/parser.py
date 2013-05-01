@@ -9,12 +9,19 @@ class Parser(object):
         self.connection = connection
 
     def parse_message(self, message):        
-        service = get_service(message)
+        service = None
 
-        if service not in requests.keys():
-            logging.info('No such request!')
+        try:
+            service = get_service(message)
+        except ValueError:
+            pass
 
         conn = self.connection
+
+        if service is None or service not in requests.keys():
+            logging.info('No such request!')
+            conn.write_message(create_error('1', 'no such request'))
+            return
 
         request_name = requests[service]
 

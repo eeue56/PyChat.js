@@ -40,3 +40,8 @@ class Room(object):
         self.send_message(create_message('RoomServer', 'Please welcome {name} to the server!\nThere are currently {i} users online -\n {r}\n'.format(name=user.id, 
                           i=self.amount_of_users_connected, 
                           r=' '.join(self.user_names))))
+    def __str__(self):
+        return 'Name: {name}, users:{users}'.format(name=self.name, users=', '.join(self.users))
+
+    def repr(self):
+        return str(self)

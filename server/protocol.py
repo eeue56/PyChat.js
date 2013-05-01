@@ -17,7 +17,7 @@ def create_userlist(usernames):
     return dumps({'service':3, 'data': {'users' : usernames}})
 
 def create_roomlist(rooms):
-    return dumps({'service':4, 'data': {'rooms' : rooms}})
+    return dumps({'service':4, 'data': {'rooms' : ','.join(room.name for room in rooms)}})
 
 def create_connect(username):
     return dumps({'service' : 5, 'data' : {'username' : username}})
@@ -26,10 +26,13 @@ def create_disconnect(username):
     return dumps({'service' : 6, 'data' : {'username' : username}})
 
 def get_service(message):
-    return loads(message)['service']
+    return loads(message)['request']
 
 def get_data(message):
     return loads(message)['data']
+
+def create_error(error_code, error_message):
+    return dumps({ 'errors': [{'message' : error_message, 'code' : error_code}]})
 
 services = {1 : create_message,
             2 : create_pong,
