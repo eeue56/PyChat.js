@@ -1,35 +1,92 @@
+/***
+ *  ChatSession.js - Dan Prince
+ * ---------------------------- 
+ *  A chatSession is the global chat object 
+ *  used by the user, which stores:
+ *
+ *  - The rooms the user is connected to
+ *  - The user's web socket
+ *  - The user object.
+ *  
+ *  It also contains wrapper methods for
+ *  the socket's send & onmessage methods,
+ *  in the forms of send and recieve.
+ **/
 var ChatSession = Class.extend({
     init: function (settings) {
-        this.messages = settings.messages; // store messages
-        this.users = semmettings.users; // array of users
-        this.html = settings.html; // the location of the chat element
-        this.room = settings.room; // the room object
-        this.me = settings.me;  // a reference to our own (authenticated) user.
-    },
-    addUser: function (user) {
-        if(user) {
-             this.users.push(user);
-        } else {
-             console.error(user, " is not a valid user object.");
-        }
-    },
-    removeUser: function (userId) {
-        for(var i = 0; i < this.users.length; i++) {
-            if(this.users[i].user.id === userId) {
-                 this.users.splice(i, 1);
-            }
-        }
-    },
-    send: function (data) {
-        // send a message down the socket
-        me.socket.send(data);
-    },
-    recieve: this.me.socket.onmessage = function (event) {
-        var data = event.data;
-        // do some shizzle with this data
-    },
-    ping: function () {
+        this.config = settings.config;
+        this.user = settings.user;
+        this.rooms = this.config.rooms || [];
         
-        me.socket.send(data);
+        try { 
+            // this is the websocket URL format
+            // scheme://host:port/resource
+            this.socket = $.gracefulWebSocket("ws://"
+                + this.config.url +":"
+                + this.config.port  +"/"
+                + this.config.resource,
+                {
+                    fallbackPollParams: {
+                         fallbackSendURL: "astraldynamics.co.uk/fws",
+                         fallBackPollURL: "astraldynamics.co.uk/fws"
+                    }
+                });
+        } catch (err) {
+            console.error(err);
+        }
+
+        // bind the socket on message event
+        // to the receive method.
+        this.socket.onmessage = this.receive;
+        this.socket.onerror = this.error;
+        
+        var self = this;    
+        this.requests = {
+            join: function () { 
+                var json = ServiceBuilder.build.join();
+                self.send(json);
+            }, 
+            ping: function () {
+                var json = ServiceBuilder.build.ping(self.user.name);
+                self.send(json); 
+            },
+            message: function () {
+                var json = ServiceBuilder.build.message();
+                self.send(json);
+            },
+            getUserList: function () {
+                var json = ServiceBuilder.build.getUserList();
+                self.send(json);
+            },
+            getRoomList: function () {
+                var json = ServiceBuilder.build.getRoomList();
+                self.send(json);
+            },
+        };
+    },
+
+    send: function (message) {
+        whenReady(this.socket, 5000, function (socket) {
+            socket.send(message); 
+        });
+    },
+    receive: function (event) {
+        // process data
+        console.log("We got data! " + event.data);
+    },
+    error: function (event) {
+        // process errors
+        console.log("We got errors! " + event.data);
+    },
+
+    addRoom: function (room) {
+        this.rooms.push(room);
+    },
+    removeRoom: function (roomId) {
+       this.rooms.each(function (room, i) {
+           if(room.id === roomId) {
+               this.rooms.splice(i, 1);
+           }
+       }); 
     }
 });
