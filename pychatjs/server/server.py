@@ -5,14 +5,13 @@ import tornado.web
 
 from random import choice
 
-from server_exceptions import RoomNotFoundException
-from room import *
+from pychatjs.server.server_exceptions import RoomNotFoundException
+from pychatjs.server.room import *
 
 import logging
 
-from json import loads, dumps
-from connections import ChatConnection
-from parser import Parser
+from pychatjs.server.connections import ChatConnection
+from pychatjs.server.parser import Parser
 
 
 usernames = ['Shauna', 'Tomuel', 'Darkok']

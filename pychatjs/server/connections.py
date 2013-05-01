@@ -1,5 +1,5 @@
 import logging
-from room import Room
+from pychatjs.server.room import Room
 
 rooms = [Room('Darkness')]
 

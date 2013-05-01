@@ -1,7 +1,5 @@
 *.pyc
 *.log
-<<<<<<< HEAD
 *.sh
-=======
 *DS_Store
->>>>>>> 602a79ac1fa7c3de17e7928c848882d22c62644c
+

@@ -1,6 +1,6 @@
 import logging
 
-from protocol import create_message
+from pychatjs.server.protocol import create_message
 
 
 class Room(object):

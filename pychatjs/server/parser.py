@@ -1,6 +1,6 @@
 import logging
 
-from protocol import *
+from pychatjs.server.protocol import *
 
 
 class Parser(object):
