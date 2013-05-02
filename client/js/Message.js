@@ -11,11 +11,13 @@ var Message = Class.extend({
     toHtml: function () {
         var html = $("<div></div>").attr("id", "m" + this.id);
         var time = $("<div></div>").attr("class", "time");
-        time.html(this.time);
         var name = $("<span></span>").attr("class", "name");
-        name.html(this.user.name);
         var body = $("<p></p>").attr("class", "message-body");
+        
+        time.html(this.time);
+        name.html(this.user.name);
         body.html(this.body);
+
         $(body).prepend(name);
         $(html).append(time);
         $(html).append(body);
