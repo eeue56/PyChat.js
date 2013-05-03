@@ -11,5 +11,5 @@ $(document).ready(function () {
         })
     });
     // send a ping every 20 seconds
-    setInterval(20000, cs.requests.ping)
+    setInterval(20000, cs.requests.ping);
 });
