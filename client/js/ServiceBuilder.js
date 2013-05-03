@@ -2,7 +2,7 @@ var ServiceBuilder = {
     build: {
         join: function (username, room) {
             var json = {
-                command: 0,
+                request: 0,
                 data: {
                     username: username,
                     room: room
@@ -13,7 +13,7 @@ var ServiceBuilder = {
 
         ping: function (username) {
             var json = {
-                command: 1,
+                request: 1,
                 data: {
                     username: username
                 }
@@ -23,13 +23,52 @@ var ServiceBuilder = {
 
         message: function (username, message) {
             var json = {
-                command: 2,
+                request: 2,
                 data: {
                     username: username,
                     message: message
                 }
             };
             return json;
-        },    
+        },
+
+        userlist: function (room) {
+            var json = {
+                request: 3,
+                data: {
+                    room: room
+                }
+            };
+            return json;
+        }, 
+
+        roomlist: function () {
+            var json = {
+                request: 4
+            };
+            return json;
+        }, 
+
+        next_slide: function () {
+            var json = {
+                request: 5,
+            };
+            return json;
+        }, 
+
+        previous_slide: function () {
+            var json = {
+                request: 6
+            };
+            return json;
+        },  
+
+        jump_to_slide: function (slide_number) {
+            var json = {
+                request: 7,
+                data: slide_number
+            };
+            return json;
+        },  
     }
 };
