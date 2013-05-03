@@ -17,7 +17,7 @@ class Room(object):
 
     def disconnect(self, user):
         self.remove_user(user)
-        self.send_message(create_disconnect(user))
+        self.send_message(create_disconnect(user.id.name))
 
     @property
     def get_users_connected(self):
