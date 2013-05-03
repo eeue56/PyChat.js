@@ -1,7 +1,34 @@
 $(document).ready(function () {
-    var cs;
+    window.cs = null;
     var pyjs = $("#pyjs");
 
+    var init = function(userName) {
+        // Create a chat session
+        cs = new ChatSession({
+            config: {
+                url: "astraldynamics.co.uk",
+                port: 80,
+                resource: "ws"
+            },
+            user: new User({
+                name: userName,
+                avatar: ""
+            })
+        });
+
+        // Get the list of rooms 
+        // and display them for the user
+        var roomReq = ServiceBuilder.build.roomList();
+        cs.send(JSON.stringify(roomReq));
+
+        // set up a ping
+        setInterval(function() {
+            var ping = ServiceBuilder.build.ping();
+            cs.send(JSON.stringify(ping));
+        }, 20000);
+    };
+
+    /* MESSAGE ARRIVES */
     Actions.message = function(name, message) {
         console.log("Service: Message");
         var msg = new Message({
@@ -11,18 +38,26 @@ $(document).ready(function () {
             time: util.currentTime()
         });
 
-        pyjs.find(".pyjs-conversation").html(msg.toHtml());
+        var conversation = pyjs.find(".pyjs-conversation")[0];
+        $(conversation).append(msg.toHtml());
+        conversation.scrollTop = conversation.scrollHeight;
+        console.log(conversation.scrollHeight);
     };
+
+    /* PONG ARRIVES */
     Actions.pong = function() {
         //console.log("Service: Pong");
         pyjs.find(".pyjs-ping").fadeIn(function() {
             pyjs.find(".pyjs-ping").fadeOut(1000);
         });
     };
+    
+    /* USERLIST RESPONSE ARRIVES */
     Actions.userList = function(users) {
         console.log("Service: User List");
     };
 
+    /* ROOMLIST RESPONSE ARRIVES */
     Actions.roomList = function(rooms) {
         console.log("Service: Room List");
         // Show the rooms list
@@ -47,47 +82,32 @@ $(document).ready(function () {
         });
     };
 
+    /* A NEW USER CONNECTS */
     Actions.userConnect = function(name) {
         console.log("Service: User Connect");
     };
+
+    /* A USER DISCONNECTS */
     Actions.userDisconnect = function(name) {
         console.log("Service: User Disconnect");
     };
+
+    /* A NEXT SLIDE REQUEST */
     Actions.nextSlide = function() {
         console.log("Service: Next Slide");
     };
+
+    /* PREVIOUS SLIDE REQUEST */
     Actions.previousSlide = function() {
         console.log("Service: PreviousSlide");
     };
+
+    /* SLIDE JUMP REQUEST */
     Actions.jumpToSlide = function(number) {
         console.log("Service: Jump Slide");
     };
 
-    var init = function(userName) {
-        // Create a chat session
-        cs = new ChatSession({
-            config: {
-                url: "astraldynamics.co.uk",
-                port: 80,
-                resource: "ws"
-            },
-            user: new User({
-                name: userName,
-                avatar: ""
-            })
-        });
-
-        // Get the list of rooms 
-        // and display them for the user
-        var roomReq = ServiceBuilder.build.roomList();
-        cs.send(JSON.stringify(roomReq));
-    };
-
-    // set up a ping
-    setInterval(function() {
-        var ping = ServiceBuilder.build.ping();
-        cs.send(JSON.stringify(ping));
-    }, 20000);
+    
 
     $(".name").show();
 

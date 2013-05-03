@@ -13,11 +13,19 @@
     overflow: hidden;
 }
 
+ul.pyjs-avatars {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+
+ul.pyjs-avatars li {
+    display:inline-block;
+}
+
 .pyjs-avatar {
     width: 32px;
     height: 32px;
-    float: left;
-    clear:none;
 }
 
 .pyjs-ping {
@@ -31,9 +39,14 @@
 }
 
 .pyjs-conversation-name {
-    margin-top: 6px;
-    margin-left: 46px;
+    margin-left:6px;
+    font-weight:bold;
     overflow: hidden;
+    float:left;
+    clear:none;
+}
+
+.pyjs-room-name {
     float:left;
     clear:none;
 }
@@ -48,10 +61,12 @@
 
 .pyjs-conversation {
     width: auto;
-    min-height: 50px;
     max-height: 500px;
+    height:300px;
     padding: 5px;
     margin-bottom: 10px;
+    overflow-y:scroll;
+    overflow-x:hidden;
 }
 
 .pyjs-conversation .name {
@@ -202,3 +217,9 @@
     color: #CCC;
 }
 
+
+
+
+.message-body {
+    margin:0;
+}
