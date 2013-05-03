@@ -40,6 +40,7 @@ class ChatConnection(object):
             room.send_message(message)
 
     def close(self):
+        logging.debug('Closing for user {user}'.format(user=self.id.name))
         self.id.release_name()
         for room in self._rooms.values():
             room.remove_user(self)
