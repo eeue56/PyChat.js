@@ -49,6 +49,22 @@
         }
     }
 
+### 7. Next slide
+    {
+        "service" : 7
+    }
+
+### 8. Previous slide
+    {
+        "service" : 8
+    }
+
+### 9. Jump to slide
+    {
+        "service" : 9,
+        "data" : slide_number
+    }
+
 ## Client
 ### Requests
 #### 0. Join
@@ -82,6 +98,22 @@
 #### 4. Get RoomList
     {
         "request": 4
+    }
+
+### 5. Next slide
+    {
+        "request" : 5
+    }
+
+### 6. Previous slide
+    {
+        "request" : 6
+    }
+
+### 7. Jump to slide
+    {
+        "request" : 7,
+        "data" : slide_number
     }
 
 ### Errors

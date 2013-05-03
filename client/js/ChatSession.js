@@ -55,11 +55,25 @@ var ChatSession = Class.extend({
                 self.send(json);
             },
             getUserList: function () {
-                var json = ServiceBuilder.build.getUserList();
+                var json = ServiceBuilder.build.userlist();
                 self.send(json);
             },
             getRoomList: function () {
-                var json = ServiceBuilder.build.getRoomList();
+                var json = ServiceBuilder.build.roomlist();
+                self.send(json);
+            },
+            nextSlide : function () {
+                var json = ServiceBuilder.build.nextSlide();
+                self.send(json);
+            },
+            previousSlide : function () {
+                var json = ServiceBuilder.build.previousSlide();
+                self.send(json);
+            },
+            jumpToSlide : function () { 
+                // TODO: replace hardcoded slidenumber with actual slide number
+                var slideNumber = 5;
+                var json = ServiceBuilder.build.jumpToSlide(slideNumber);
                 self.send(json);
             },
         };
@@ -73,6 +87,51 @@ var ChatSession = Class.extend({
     receive: function (event) {
         // process data
         console.log("We got data! " + event.data);
+
+        var res = JSON.parse(event.data);
+        var d = res.data;
+        switch(res.service) {
+            /* 1. Message from user */
+            case 1:
+                Actions.message(d.message, d.username);
+                break;
+            /* 2. Pong */
+            case 2:
+                Actions.pong();
+                break;
+            /* 3. Return Userlist */
+            case 3:
+                Actions.userList(d.users);
+                break;
+            /* 4. Return RoomList */
+            case 4:
+                Actions.roomList(d.rooms);
+                break;
+            /* 5. User Connect */
+            case 5:
+                Actions.userConnect(d.username);
+                break;
+            /* 6. User Disconnect */
+            case 6:
+                Actions.userDisconnect(d.username);
+                break;
+            /* 7. Next slide */
+            case 7:
+                Actions.nextSlide();
+                break;
+            /* 8. Previous slide */
+            case 8:
+                Actions.previousSlide();
+                break;
+            /* 9. Jump to slide */
+            case 9:
+                Actions.jumpToSlide(d.slideNumber);
+                break;
+            default:
+                console.error("Unrecognized Protocol: " 
+                    + res.service);
+        }
+
     },
     error: function (event) {
         // process errors

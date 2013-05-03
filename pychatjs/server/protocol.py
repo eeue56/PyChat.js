@@ -5,7 +5,10 @@ requests = {0 : 'join',
             1 : 'ping',
             2 : 'send',
             3 : 'userlist',
-            4 : 'roomlist'}
+            4 : 'roomlist',
+            5 : 'next_slide',
+            6 : 'previous_slide',
+            7 : 'jump_to_slide'}
 
 def create_message(username, message):
     return '{{"service":1, "data":{{"message":"{mes}", "username":"{user}"}} }}\n'.format(mes=message, user=username)
@@ -25,6 +28,15 @@ def create_connect(username):
 def create_disconnect(username):
     return dumps({'service' : 6, 'data' : {'username' : username}})
 
+def create_next_slide():
+    return dumps({'service' : 7})
+
+def create_previous_slide():
+    return dumps({'service' : 8})
+
+def create_jump_to(slide_number):
+    return dumps({'service' : 9, 'data' : slide_number})
+
 def get_service(message):
     return loads(message)['request']
 
@@ -39,7 +51,10 @@ services = {1 : create_message,
             3 : create_userlist,
             4 : create_roomlist,
             5 : create_connect,
-            6 : create_disconnect}
+            6 : create_disconnect,
+            7 : create_next_slide,
+            8 : create_previous_slide,
+            9 : create_jump_to}
 
 def __test():
     assert loads(create_message('Noah', 'hi')) == {"service":1, "data":{"message":"hi", "username":"Noah"} }

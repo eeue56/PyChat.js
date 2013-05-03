@@ -2,3 +2,44 @@ body {
     font-family:"Segoe UI",Calibri,"Myriad Pro",Myriad,"Trebuchet MS",Helvetica,Arial,sans-serif;
     width: 50%;
 }
+
+
+.modal {
+    position:absolute;
+    width:260px;
+    height:auto;
+    top:40%;
+    left:50%;
+    margin-left:-130px;
+    padding:10px;
+    z-index:10;
+    background-color:#ececec;
+    color:#666;
+    text-align:center;
+
+    box-shadow:0 0 0 10px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 0 10px rgba(0,0,0,0.4);
+    -webkit-box-shadow:0 0 0 10px rgba(0,0,0,0.4);
+    -o-box-shadow:0 0 0 10px rgba(0,0,0,0.4);
+}
+
+.modal input {
+    width: 100%;
+    max-height: 200px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+    border:none;
+    font-size:12pt;
+    padding:0 4px;
+}
+
+.hidden {
+    display:none;
+}
+
+.enter {
+    text-align:center;
+    text-decoration:underline;
+    cursor:pointer;
+}

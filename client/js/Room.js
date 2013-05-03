@@ -5,6 +5,7 @@ var ChatSession = Class.extend({
         this.users = settings.users; // array of users
         this.html = settings.html; // the location of the chat element
     },
+    
     addUser: function (user) {
         if(user) {
              this.users.push(user);
@@ -12,6 +13,7 @@ var ChatSession = Class.extend({
              console.error(user, " is not a valid user object.");
         }
     },
+
     removeUser: function (userId) {
         for(var i = 0; i < this.users.length; i++) {
             if(this.users[i].user.id === userId) {
