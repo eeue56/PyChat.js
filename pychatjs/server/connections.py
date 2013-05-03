@@ -22,8 +22,12 @@ class ChatConnection(object):
                 room.add_user(self)
                 self._rooms[room_name] = room
                 room.welcome(self)
-                return
-        raise RoomNotFoundException('No such room as {name}!'.format(name=room_name))
+                break
+        else:
+            room = Room(room_name)
+            rooms.append(Room(room_name))
+            self._rooms[room_name] = room
+            room.add_user(self)
 
     def send_to_room(self, message, room_name):
         room = get_room(room_name)
