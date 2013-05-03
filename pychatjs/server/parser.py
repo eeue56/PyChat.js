@@ -38,6 +38,7 @@ class Parser(object):
 
         if request_name == 'join':
             if conn.id.name != data['username']:
+                conn.id.release_name()
                 conn.id.name = data['username']
             conn.join_room(data['room'])
 
