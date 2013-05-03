@@ -23,24 +23,30 @@
             
             <div class="pyjs-container">
 
-               <div class="pyjs-conversation-header">
+               <ul class="pyjs-avatars">
+                <li>
+                  <img class="pyjs-avatar"></img>
+                </li>
+               </ul>
 
-                   <div class="pyjs-avatar"></div>
-                   <div class="pyjs-conversation-name">Conversation Name</div>
+               <div class="pyjs-conversation-header">
+                   <div class="pyjs-room-name">Room: </div>
+                   <div class="pyjs-conversation-name"></div>
                    <div class="pyjs-ping"></div>
                </div>
 
+               
                <div class="pyjs-conversation">
-                   Messages
+                   
                </div>
 
                <div class="pyjs-conversation-footer">
-               
+                  <form>
                    <div contenteditable="true" class="pyjs-conversation-message">
                        Enter Message
                    </div>
-                   <a class="pyjs-conversation-send" href="#">Send</a>
-                   
+                   <a type="submit" class="pyjs-conversation-send" href="#">Send</a>
+                   </form>
                </div>
 
            </div>
