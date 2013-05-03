@@ -11,22 +11,23 @@ requests = {0 : 'join',
             7 : 'jump_to_slide'}
 
 def create_message(username, message):
-    return '{{"service":1, "data":{{"message":"{mes}", "username":"{user}"}} }}'.format(mes=message.replace('\n', ''), user=username)
+    message = message.encode('string-escape')
+    return '{{"service":1, "data":{{"message":"{mes}", "username":"{user}"}} }}'.format(mes=message, user=username)
 
 def create_pong():
     return '{"service" : 2}'
 
 def create_userlist(usernames):
-    return dumps({'service':3, 'data': {'users' : usernames.strip()}})
+    return dumps({'service':3, 'data': {'users' : usernames}})
 
 def create_roomlist(rooms):
-    return dumps({'service':4, 'data': {'rooms' : [room.name.strip() for room in rooms]}})
+    return dumps({'service':4, 'data': {'rooms' : [room.name for room in rooms]}})
 
 def create_connect(username):
-    return dumps({'service' : 5, 'data' : {'username' : username.strip()}})
+    return dumps({'service' : 5, 'data' : {'username' : username})
 
 def create_disconnect(username):
-    return dumps({'service' : 6, 'data' : {'username' : username.strip()}})
+    return dumps({'service' : 6, 'data' : {'username' : username}})
 
 def create_next_slide():
     return dumps({'service' : 7})
@@ -44,7 +45,7 @@ def get_data(message):
     return loads(message)['data']
 
 def create_error(error_code, error_message):
-    error_message = error_message.replace('\n', '')
+    error_message = error_message.encode('string-escape')
     return dumps({ 'errors': [{'message' : error_message, 'code' : error_code}]})
 
 services = {1 : create_message,
