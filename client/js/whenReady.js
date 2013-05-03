@@ -14,9 +14,12 @@
  *
  */
 var whenReady = function (socket, timeout, callback) {
+    var debug = false;
     var interval = 100;
-    Debug.out("Is socket ready...?");
-    Debug.out("State: " + socket.readyState);
+    if(debug) {
+        console.log("Is socket ready...?");
+        console.log("State: " + socket.readyState);
+    }
     switch(socket.readyState) {
         case 0: // connecting 
             if((timeout -= interval) <= 0) {

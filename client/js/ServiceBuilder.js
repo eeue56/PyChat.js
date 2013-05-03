@@ -32,7 +32,7 @@ var ServiceBuilder = {
             return json;
         },
 
-        userlist: function (room) {
+        userList: function (room) {
             var json = {
                 request: 3,
                 data: {
@@ -42,12 +42,12 @@ var ServiceBuilder = {
             return json;
         }, 
 
-        roomlist: function () {
+        roomList: function (that) {
             var json = {
                 request: 4
             };
             return json;
-        }, 
+        },
 
         nextSlide: function () {
             var json = {
@@ -69,6 +69,6 @@ var ServiceBuilder = {
                 data: slideNumber
             };
             return json;
-        },  
+        }
     }
 };
