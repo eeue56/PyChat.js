@@ -2,12 +2,12 @@ import logging
 from pychatjs.server.room import Room
 
 
-
 class ChatConnection(object):
-    def __init__(self, username, handler):
+    def __init__(self, username, handler, rooms):
         self.id = username
         self._rooms = {}
         self.handler = handler
+        self.rooms = rooms
 
     def write_message(self, message):
         logging.debug("Sending message {mes} to {usr}".format(mes=message, usr=self.id))
@@ -16,7 +16,7 @@ class ChatConnection(object):
     def join_room(self, room_name):        
         logging.debug('Joining room {ro}'.format(ro=room_name))
 
-        for room in rooms:
+        for room in self.rooms:
             if room.name == room_name:
                 room.add_user(self)
                 self._rooms[room_name] = room
@@ -24,7 +24,7 @@ class ChatConnection(object):
                 break
         else:
             room = Room(room_name)
-            rooms.append(Room(room_name))
+            self.rooms.append(Room(room_name))
             self._rooms[room_name] = room
             room.add_user(self)
 
@@ -46,7 +46,7 @@ class ChatConnection(object):
 
     @property
     def possible_rooms(self):
-        return rooms
+        return self.rooms
 
     def get_room(self, room_name):
         try:
