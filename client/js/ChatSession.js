@@ -55,11 +55,25 @@ var ChatSession = Class.extend({
                 self.send(json);
             },
             getUserList: function () {
-                var json = ServiceBuilder.build.getUserList();
+                var json = ServiceBuilder.build.userlist();
                 self.send(json);
             },
             getRoomList: function () {
-                var json = ServiceBuilder.build.getRoomList();
+                var json = ServiceBuilder.build.roomlist();
+                self.send(json);
+            },
+            nextSlide : function () {
+                var json = ServiceBuilder.build.nextSlide();
+                self.send(json);
+            },
+            previousSlide : function () {
+                var json = ServiceBuilder.build.previousSlide();
+                self.send(json);
+            },
+            jumpToSlide : function () { 
+                // TODO: replace hardcoded slidenumber with actual slide number
+                var slideNumber = 5;
+                var json = ServiceBuilder.build.jumpToSlide(slideNumber);
                 self.send(json);
             },
         };

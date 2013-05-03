@@ -10,6 +10,6 @@ $(document).ready(function () {
             avatar: ""
         })
     });
-    // do a test ping
-    cs.requests.ping();
+    // send a ping every 20 seconds
+    setInterval(20000, cs.requests.ping)
 });

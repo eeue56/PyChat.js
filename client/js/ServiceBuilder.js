@@ -49,24 +49,24 @@ var ServiceBuilder = {
             return json;
         }, 
 
-        next_slide: function () {
+        nextSlide: function () {
             var json = {
                 request: 5,
             };
             return json;
         }, 
 
-        previous_slide: function () {
+        previousSlide: function () {
             var json = {
                 request: 6
             };
             return json;
         },  
 
-        jump_to_slide: function (slide_number) {
+        jumpToSlide: function (slideNumber) {
             var json = {
                 request: 7,
-                data: slide_number
+                data: slideNumber
             };
             return json;
         },  
