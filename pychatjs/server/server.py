@@ -13,6 +13,7 @@ import logging
 from pychatjs.server.connections import ChatConnection
 from pychatjs.server.parser import Parser
 
+rooms = [Room('Darkness')]
 
 usernames = ['Shauna', 'Tomuel', 'Darkok']
 
@@ -41,7 +42,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         else:
             id_ = User('Guest {i}'.format(choice('abcdefgjklmnopqrsty')))
 
-        self.connection = ChatConnection(id_, self)
+        self.connection = ChatConnection(id_, self, rooms)
         self.parser = Parser(self.connection)
 
         logging.info('User with name {name} joined!'.format(name=id_))

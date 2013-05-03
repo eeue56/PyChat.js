@@ -34,6 +34,8 @@ class Parser(object):
 
         data = get_data(message)
 
+        logging.debug(data)
+
         if request_name == 'join':
             if conn.id.name != data['username']:
                 conn.id.name = data['username']
