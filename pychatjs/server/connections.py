@@ -42,7 +42,7 @@ class ChatConnection(object):
         logging.debug('Closing for user {user}'.format(user=self.id.name))
         self.id.release_name()
         for room in self._rooms.values():
-            room.remove_user(self)
+            room.disconnect(self)
 
     @property
     def possible_rooms(self):

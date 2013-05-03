@@ -11,7 +11,7 @@ requests = {0 : 'join',
             7 : 'jump_to_slide'}
 
 def create_message(username, message):
-    message = message.replace('\n', '')
+    message = message.replace('\n', '<br/>')
     return '{{"service":1, "data":{{"message":"{mes}", "username":"{user}"}} }}'.format(mes=message, user=username)
 
 def create_pong():
@@ -45,7 +45,7 @@ def get_data(message):
     return loads(message)['data']
 
 def create_error(error_code, error_message):
-    error_message = error_message.replace('\n', '')
+    error_message = error_message.replace('\n', '<br/>')
     return dumps({ 'errors': [{'message' : error_message, 'code' : error_code}]})
 
 services = {1 : create_message,

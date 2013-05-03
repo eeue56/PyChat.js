@@ -15,7 +15,7 @@ from pychatjs.server.parser import Parser
 
 rooms = [Room('Darkness')]
 
-usernames = ['Shauna', 'Tomuel', 'Darkok']
+usernames = ['Shauna', 'Tomuel', 'Darkok', 'Endl', 'Frumo']
 
 
 class User(object):
