@@ -1,7 +1,7 @@
 import logging
 
 from pychatjs.server.protocol import *
-
+from pychatjs.server.server import rooms
 
 class Parser(object):
 

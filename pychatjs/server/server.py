@@ -13,6 +13,7 @@ import logging
 from pychatjs.server.connections import ChatConnection
 from pychatjs.server.parser import Parser
 
+rooms = [Room('Darkness')]
 
 usernames = ['Shauna', 'Tomuel', 'Darkok']
 

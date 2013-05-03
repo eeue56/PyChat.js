@@ -1,7 +1,6 @@
 import logging
 from pychatjs.server.room import Room
 
-rooms = [Room('Darkness')]
 
 
 class ChatConnection(object):
