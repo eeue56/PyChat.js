@@ -1,7 +1,7 @@
 from json import dumps, loads
 
 
-requests = {0 : 'join',
+REQUESTS = {0 : 'join',
             1 : 'ping',
             2 : 'send',
             3 : 'userlist',
@@ -11,19 +11,27 @@ requests = {0 : 'join',
             7 : 'jump_to_slide'}
 
 def create_message(username, message):
+    """ Creates a standard message from a given user with the message """
     message = message.encode('string-escape')
-    return '{{"service":1, "data":{{"message":"{mes}", "username":"{user}"}} }}'.format(mes=message, user=username)
+    return '{{"service":1, "data":{{"message":"{mes}", "username":"{user}"}} }}'.format(
+            mes=message, user=username)
 
 def create_pong():
+    """ Creates a pong """
     return '{"service" : 2}'
 
 def create_userlist(usernames):
+    """ Creates a userlist from usernames """
     return dumps({'service':3, 'data': {'users' : usernames}})
 
 def create_roomlist(rooms):
-    return dumps({'service':4, 'data': {'rooms' : [room.name for room in rooms]}})
+    """ Creates a room list from rooms """
+    return dumps({'service':4, 
+                  'data': {'rooms' : [room.name for room in rooms]}
+                  })
 
 def create_connect(username):
+    """ Connects a user """
     return dumps({'service' : 5, 'data' : {'username' : username}})
 
 def create_disconnect(username):
