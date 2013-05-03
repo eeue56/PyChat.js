@@ -35,7 +35,10 @@ class Parser(object):
         data = get_data(message)
 
         if request_name == 'join':
-            conn.join_room(data['user'])
+            if conn.id.name != data['username']:
+                conn.id.name = data['username']
+            conn.join_room(data['room'])
+
         elif request_name == 'userlist':
             room = conn.get_room(data['room'])
 

@@ -34,6 +34,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
         self.write_message('Connected successfully\n')
 
+        # set a temp name
         if len(usernames) > 0:
             id_ = User(choice(usernames))
             usernames.remove(id_.name)

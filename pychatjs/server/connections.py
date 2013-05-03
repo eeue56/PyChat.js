@@ -9,7 +9,6 @@ class ChatConnection(object):
         self.id = username
         self._rooms = {}
         self.handler = handler
-        self.join_room('Darkness')
 
     def write_message(self, message):
         logging.debug("Sending message {mes} to {usr}".format(mes=message, usr=self.id))
