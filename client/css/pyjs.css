@@ -41,6 +41,15 @@
     margin-bottom: 10px;
 }
 
+.pyjs-conversation .name {
+    display:inline-block;
+    color:#ccc;
+}
+.pyjs-conversation .time {
+    display:inline-block;
+    margin-right:4px;
+}
+
 .pyjs-conversation-footer {
     width: auto;
     height: auto;

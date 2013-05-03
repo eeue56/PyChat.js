@@ -14,11 +14,11 @@ var Message = Class.extend({
         var body = $("<p></p>").attr("class", "message-body");
         
         time.html(this.time);
-        name.html(this.user.name);
+        name.html(this.user);
         body.html(this.body);
 
-        $(body).prepend(name);
         $(html).append(time);
+        $(html).append(name);
         $(html).append(body);
         return html;
     }

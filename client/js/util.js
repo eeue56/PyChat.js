@@ -12,12 +12,11 @@ var util = {
             li.html(arr[i]);
             ul.append(li);
         }
-        console.log("Building list: ", ul);
         return ul;
     },
 
     currentTime: function() {
         var d = new Date();
-        return d.getHour() + ":" + d.getMinute();
+        return d.toLocaleTimeString();
     }
 };

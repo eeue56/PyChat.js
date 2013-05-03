@@ -87,13 +87,20 @@ var ChatSession = Class.extend({
     receive: function (event) {
         // process data
         console.log("We got data! " + event.data);
+        
+        try {
+            var res = JSON.parse(event.data);
+            var d = res.data;
+        } catch(e) {
+            console.error("Unrecognized Protocol");
+            return false;
+        }
 
-        var res = JSON.parse(event.data);
-        var d = res.data;
+        console.log("SERVICE["+ res.service +"]");
         switch(res.service) {
             /* 1. Message from user */
             case 1:
-                Actions.message(d.message, d.username);
+                Actions.message(d.username, d.message);
                 break;
             /* 2. Pong */
             case 2:

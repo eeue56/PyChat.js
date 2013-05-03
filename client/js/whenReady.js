@@ -1,8 +1,6 @@
 /*
  * whenReady.js - Dan Prince
- */
-
-/*
+ *
  * Checks whether a socket is ready for
  * message sending yet.
  * 
@@ -14,7 +12,7 @@
  *
  */
 var whenReady = function (socket, timeout, callback) {
-    var debug = false;
+    var debug = true;
     var interval = 100;
     if(debug) {
         console.log("Is socket ready...?");

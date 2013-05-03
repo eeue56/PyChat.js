@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     Actions.message = function(name, message) {
         console.log("Service: Message");
+        console.log(message);
         var msg = new Message({
             id: "0", // TODO: fix hardcoded ID
             user: name,
@@ -89,9 +90,9 @@ $(document).ready(function () {
 
     pyjs.find(".pyjs-conversation-send").click(function() {
         var msg = pyjs.find(".pyjs-conversation-message").html();
+        msg = msg.trim();
         // clear input
         pyjs.find(".pyjs-conversation-message").html("");
-        console.log(msg);
         var msgReq = ServiceBuilder.build.message(cs.user.name, msg);
         cs.send(JSON.stringify(msgReq));
     });
