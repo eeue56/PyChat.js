@@ -1,6 +1,6 @@
 import logging
 
-from pychatjs.server.protocol import create_message
+from pychatjs.server.protocol import create_message, create_disconnect
 
 
 class Room(object):
@@ -14,6 +14,10 @@ class Room(object):
 
     def remove_user(self, user):
         self.users.remove(user)
+
+    def disconnect(self, user):
+        self.remove_user(user)
+        self.send_message(create_disconnect(user))
 
     @property
     def get_users_connected(self):
