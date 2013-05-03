@@ -49,3 +49,9 @@ class Parser(object):
 
             if room is not None:
                 room.send_message(create_message(data['username'], data['message']))
+        elif request_name == 'next_slide':
+            room.send_message(create_next_slide())
+        elif request_name == 'previous_slide':
+            room.send_message(create_previous_slide())
+        elif request_name == 'jump_to_slide':
+            room.send_message(create_jump_to(data))
