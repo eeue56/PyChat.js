@@ -35,7 +35,7 @@ class ChatConnection(object):
             room.send_message(message)
 
     def _send_to_all_rooms(self, message):
-        for room in self._rooms:
+        for room in self._rooms.values():
             room.send_message(message)
 
     def close(self):
