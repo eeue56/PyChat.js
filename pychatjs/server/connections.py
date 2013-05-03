@@ -30,7 +30,7 @@ class ChatConnection(object):
             room.add_user(self)
 
     def send_to_room(self, message, room_name):
-        room = get_room(room_name)
+        room = self.get_room(room_name)
 
         if room is not None:
             room.send_message(message)
