@@ -17,7 +17,7 @@ def create_userlist(usernames):
     return dumps({'service':3, 'data': {'users' : usernames}})
 
 def create_roomlist(rooms):
-    return dumps({'service':4, 'data': {'rooms' : ','.join(room.name for room in rooms)}})
+    return dumps({'service':4, 'data': {'rooms' : [room.name for room in rooms]}})
 
 def create_connect(username):
     return dumps({'service' : 5, 'data' : {'username' : username}})
