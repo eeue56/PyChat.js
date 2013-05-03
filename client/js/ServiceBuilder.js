@@ -21,12 +21,13 @@ var ServiceBuilder = {
             return json;
         },
 
-        message: function (username, message) {
+        message: function (username, message, room) {
             var json = {
                 request: 2,
                 data: {
                     username: username,
-                    message: message
+                    message: message,
+                    room: room
                 }
             };
             return json;

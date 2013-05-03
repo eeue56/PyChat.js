@@ -4,7 +4,6 @@ $(document).ready(function () {
 
     Actions.message = function(name, message) {
         console.log("Service: Message");
-        console.log(message);
         var msg = new Message({
             id: "0", // TODO: fix hardcoded ID
             user: name,
@@ -15,7 +14,10 @@ $(document).ready(function () {
         pyjs.find(".pyjs-conversation").html(msg.toHtml());
     };
     Actions.pong = function() {
-        console.log("Service: Pong");
+        //console.log("Service: Pong");
+        pyjs.find(".pyjs-ping").fadeIn(function() {
+            pyjs.find(".pyjs-ping").fadeOut(1000);
+        });
     };
     Actions.userList = function(users) {
         console.log("Service: User List");
@@ -36,6 +38,7 @@ $(document).ready(function () {
                 roomName
             );
             cs.send(JSON.stringify(joinReq));
+            cs.room = roomName;
 
             pyjs.find(".pyjs-conversation-name").html(roomName);
 
@@ -80,6 +83,12 @@ $(document).ready(function () {
         cs.send(JSON.stringify(roomReq));
     };
 
+    // set up a ping
+    setInterval(function() {
+        var ping = ServiceBuilder.build.ping();
+        cs.send(JSON.stringify(ping));
+    }, 20000);
+
     $(".name").show();
 
     $(".enter").click(function () {
@@ -93,7 +102,10 @@ $(document).ready(function () {
         msg = msg.trim();
         // clear input
         pyjs.find(".pyjs-conversation-message").html("");
-        var msgReq = ServiceBuilder.build.message(cs.user.name, msg);
+
+        var msgReq = ServiceBuilder.build.message(
+            cs.user.name, msg, cs.room);
+
         cs.send(JSON.stringify(msgReq));
     });
 

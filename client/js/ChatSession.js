@@ -17,7 +17,8 @@ var ChatSession = Class.extend({
         this.config = settings.config;
         this.user = settings.user;
         this.rooms = this.config.rooms || [];
-        
+        this.room = "";
+
         try { 
             // this is the websocket URL format
             // scheme://host:port/resource
@@ -86,7 +87,7 @@ var ChatSession = Class.extend({
     },
     receive: function (event) {
         // process data
-        console.log("We got data! " + event.data);
+        //console.log("We got data! " + event.data);
         
         try {
             var res = JSON.parse(event.data);
@@ -96,7 +97,7 @@ var ChatSession = Class.extend({
             return false;
         }
 
-        console.log("SERVICE["+ res.service +"]");
+        //console.log("SERVICE["+ res.service +"]");
         switch(res.service) {
             /* 1. Message from user */
             case 1:

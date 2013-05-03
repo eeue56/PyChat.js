@@ -12,7 +12,7 @@
  *
  */
 var whenReady = function (socket, timeout, callback) {
-    var debug = true;
+    var debug = false;
     var interval = 100;
     if(debug) {
         console.log("Is socket ready...?");

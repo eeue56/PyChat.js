@@ -17,12 +17,25 @@
     width: 32px;
     height: 32px;
     float: left;
+    clear:none;
+}
+
+.pyjs-ping {
+    width:10px;
+    height:10px;
+    float:right;
+    clear:none;
+    border-radius:100%;
+    margin-top:10px;
+    display:none;
 }
 
 .pyjs-conversation-name {
     margin-top: 6px;
     margin-left: 46px;
     overflow: hidden;
+    float:left;
+    clear:none;
 }
 
 .pyjs-conversation-header {
@@ -115,6 +128,10 @@
     color: #AAA;
 }
 
+.light .pyjs-ping {
+    background-color:#ccc;
+}
+
 /* Dark Theme */
 
 .dark .pyjs-container {
@@ -151,6 +168,10 @@
 .dark .pyjs-conversation-send {
     background-color: #444;
     color: #999;
+}
+
+.dark .pyjs-ping {
+    background-color:#333;
 }
 
 /* Dark Theme - Disabled */
