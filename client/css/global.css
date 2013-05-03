@@ -43,3 +43,14 @@ body {
     text-decoration:underline;
     cursor:pointer;
 }
+
+#room-list ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+
+.join-room {
+    text-decoration: underline;
+    cursor:pointer;
+}

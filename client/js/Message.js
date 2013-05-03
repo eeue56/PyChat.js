@@ -2,7 +2,6 @@ var Message = Class.extend({
     init: function (settings) {
         this.id = settings.id;
         this.user = settings.user;
-        this.room = settings.room;
         this.body = settings.body || 
                     settings.text || 
                     settings.data;
