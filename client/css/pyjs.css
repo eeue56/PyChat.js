@@ -98,6 +98,7 @@ ul.pyjs-avatars li {
     box-sizing: border-box;
     overflow: auto;
     border:none;
+    font-family:monospace;
 }
 
 .pyjs-conversation-send {

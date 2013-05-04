@@ -11,7 +11,7 @@ var Message = Class.extend({
         var html = $("<div></div>").attr("id", "m" + this.id);
         var time = $("<div></div>").attr("class", "time");
         var name = $("<span></span>").attr("class", "name");
-        var body = $("<pre></pre>").attr("class", "message-body");
+        var body = $("<p></p>").attr("class", "message-body");
         
         if(!sameBlock) {
             $(html).attr("class", "new-block");
