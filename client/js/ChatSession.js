@@ -13,10 +13,9 @@
  *  in the forms of send and recieve.
  **/
 var ChatSession = Class.extend({
-    init: function (settings) {
+    init: function(settings) {
         this.config = settings.config;
         this.user = settings.user;
-        this.rooms = this.config.rooms || [];
         this.room = "";
 
         try { 
@@ -43,35 +42,35 @@ var ChatSession = Class.extend({
         
         var self = this;    
         this.requests = {
-            join: function () { 
+            join: function() { 
                 var json = ServiceBuilder.build.join();
                 self.send(json);
             }, 
-            ping: function () {
+            ping: function( ) {
                 var json = ServiceBuilder.build.ping(self.user.name);
                 self.send(json); 
             },
-            message: function () {
+            message: function() {
                 var json = ServiceBuilder.build.message();
                 self.send(json);
             },
-            getUserList: function () {
+            getUserList: function() {
                 var json = ServiceBuilder.build.userlist();
                 self.send(json);
             },
-            getRoomList: function () {
+            getRoomList: function() {
                 var json = ServiceBuilder.build.roomlist();
                 self.send(json);
             },
-            nextSlide : function () {
+            nextSlide : function() {
                 var json = ServiceBuilder.build.nextSlide();
                 self.send(json);
             },
-            previousSlide : function () {
+            previousSlide : function() {
                 var json = ServiceBuilder.build.previousSlide();
                 self.send(json);
             },
-            jumpToSlide : function () { 
+            jumpToSlide : function() { 
                 // TODO: replace hardcoded slidenumber with actual slide number
                 var slideNumber = 5;
                 var json = ServiceBuilder.build.jumpToSlide(slideNumber);
@@ -80,12 +79,12 @@ var ChatSession = Class.extend({
         };
     },
 
-    send: function (message) {
-        whenReady(this.socket, 5000, function (socket) {
+    send: function(message) {
+        whenReady(this.socket, 5000, function(socket) {
             socket.send(message); 
         });
     },
-    receive: function (event) {
+    receive: function(event) {
         // process data
         //console.log("We got data! " + event.data);
         
@@ -141,16 +140,16 @@ var ChatSession = Class.extend({
         }
 
     },
-    error: function (event) {
+    error: function(event) {
         // process errors
         console.log("We got errors! " + event.data);
     },
 
-    addRoom: function (room) {
+    addRoom: function(room) {
         this.rooms.push(room);
     },
-    removeRoom: function (roomId) {
-       this.rooms.each(function (room, i) {
+    removeRoom: function(roomId) {
+       this.rooms.each(function(room, i) {
            if(room.id === roomId) {
                this.rooms.splice(i, 1);
            }

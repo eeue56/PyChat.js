@@ -19,13 +19,18 @@ $(document).ready(function () {
         // Get the list of rooms 
         // and display them for the user
         var roomReq = ServiceBuilder.build.roomList();
-        cs.send(JSON.stringify(roomReq));
+        cs.send(roomReq);
 
         // set up a ping
         setInterval(function() {
             var ping = ServiceBuilder.build.ping();
-            cs.send(JSON.stringify(ping));
+            cs.send(ping);
         }, 20000);
+    };
+
+    var previousMessage = {
+        name: "",
+        expired: false
     };
 
     /* MESSAGE ARRIVES */
@@ -38,8 +43,20 @@ $(document).ready(function () {
             time: util.currentTime()
         });
 
+        var sameBlock = false;
+        if(name == previousMessage.name && 
+            previousMessage.expired === false) {
+            sameBlock = true;
+        } else {
+            previousMessage.name = name;
+            // end the current block in 10 seconds
+            setTimeout(function() {
+                previousMessage.expired = true;
+            }, 10000);
+        }
+
         var conversation = pyjs.find(".pyjs-conversation")[0];
-        $(conversation).append(msg.toHtml());
+        $(conversation).append(msg.toHtml(sameBlock));
         // autoscroll to bottom of chat
         conversation.scrollTop = conversation.scrollHeight;
     };
@@ -72,7 +89,7 @@ $(document).ready(function () {
                 cs.user.name,
                 roomName
             );
-            cs.send(JSON.stringify(joinReq));
+            cs.send(joinReq);
             cs.room = roomName;
 
             pyjs.find(".pyjs-conversation-name").html(roomName);
@@ -85,6 +102,14 @@ $(document).ready(function () {
     /* A NEW USER CONNECTS */
     Services.userConnect = function(name) {
         console.log("Service: User Connect");
+        var li = $("<li></li>")
+        var avatar = new Image();
+        avatar.src = "img/blank.png";
+        avatar.title = name;
+        li.html(avatar);
+        $(avatar).addClass("pyjs-avatar");
+        pyjs.find(".pyjs-avatars").append(li);
+
     };
 
     /* A USER DISCONNECTS */
@@ -107,7 +132,6 @@ $(document).ready(function () {
         console.log("Service: Jump Slide");
     };
 
-    
 
     $(".name").show();
 
@@ -126,7 +150,7 @@ $(document).ready(function () {
         var msgReq = ServiceBuilder.build.message(
             cs.user.name, msg, cs.room);
 
-        cs.send(JSON.stringify(msgReq));
+        cs.send(msgReq);
     });
 
 });

@@ -7,18 +7,21 @@ var Message = Class.extend({
                     settings.data;
         this.time = settings.time;
     },
-    toHtml: function () {
+    toHtml: function (sameBlock) {
         var html = $("<div></div>").attr("id", "m" + this.id);
         var time = $("<div></div>").attr("class", "time");
         var name = $("<span></span>").attr("class", "name");
         var body = $("<pre></pre>").attr("class", "message-body");
         
-        time.html(this.time);
-        name.html(this.user);
-        body.html(this.body);
+        if(!sameBlock) {
+            $(html).attr("class", "new-block");
+            time.html(this.time);
+            name.html(this.user);
+            $(html).append(time);
+            $(html).append(name);
+        }
 
-        $(html).append(time);
-        $(html).append(name);
+        body.html(this.body);
         $(html).append(body);
         return html;
     }

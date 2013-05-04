@@ -11,12 +11,17 @@
     height: auto;
     padding: 10px;
     overflow: hidden;
+    position:relative;
 }
 
 ul.pyjs-avatars {
     list-style-type:none;
     margin:0;
     padding:0;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
 }
 
 ul.pyjs-avatars li {
@@ -26,6 +31,7 @@ ul.pyjs-avatars li {
 .pyjs-avatar {
     width: 32px;
     height: 32px;
+    border:none !important;
 }
 
 .pyjs-ping {
@@ -34,7 +40,6 @@ ul.pyjs-avatars li {
     float:right;
     clear:none;
     border-radius:100%;
-    margin-top:10px;
     display:none;
 }
 
@@ -55,6 +60,7 @@ ul.pyjs-avatars li {
     width: auto;
     height: auto;
     padding: 0px;
+    margin-top:32px;
     margin-bottom: 10px;
     overflow: hidden;
 }
@@ -222,4 +228,8 @@ ul.pyjs-avatars li {
 
 .message-body {
     margin:0;
+}
+
+.new-block {
+    margin-top:10px;
 }

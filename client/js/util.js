@@ -18,5 +18,10 @@ var util = {
     currentTime: function() {
         var d = new Date();
         return d.toLocaleTimeString();
+    },
+
+    currentMinute: function() {
+        var d  = new Date();
+        return d.getMinutes();
     }
 };

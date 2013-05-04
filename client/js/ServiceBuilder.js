@@ -1,4 +1,12 @@
 var ServiceBuilder = {
+    asJSON: true,
+    create: function(obj) {
+        if(ServiceBuilder.asJSON) {
+            return JSON.stringify(obj);
+        } else {
+            return obj;
+        }
+    },
     build: {
         join: function (username, room) {
             var json = {
@@ -8,7 +16,7 @@ var ServiceBuilder = {
                     room: room
                 }
             };
-            return json;
+            return ServiceBuilder.create(json);
         },
 
         ping: function (username) {
@@ -18,7 +26,7 @@ var ServiceBuilder = {
                     username: username
                 }
             };
-            return json;
+            return ServiceBuilder.create(json);
         },
 
         message: function (username, message, room) {
@@ -30,7 +38,7 @@ var ServiceBuilder = {
                     room: room
                 }
             };
-            return json;
+            return ServiceBuilder.create(json);
         },
 
         userList: function (room) {
@@ -40,28 +48,28 @@ var ServiceBuilder = {
                     room: room
                 }
             };
-            return json;
+            return ServiceBuilder.create(json);
         }, 
 
         roomList: function (that) {
             var json = {
                 request: 4
             };
-            return json;
+            return ServiceBuilder.create(json);
         },
 
         nextSlide: function () {
             var json = {
                 request: 5,
             };
-            return json;
+            return ServiceBuilder.create(json);
         }, 
 
         previousSlide: function () {
             var json = {
                 request: 6
             };
-            return json;
+            return ServiceBuilder.create(json);
         },  
 
         jumpToSlide: function (slideNumber) {
@@ -69,7 +77,7 @@ var ServiceBuilder = {
                 request: 7,
                 data: slideNumber
             };
-            return json;
+            return ServiceBuilder.create(json);
         }
     }
 };
