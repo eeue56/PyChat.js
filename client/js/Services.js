@@ -1,4 +1,4 @@
-var Actions = {
+var Services = {
     /* 1. Message from user */
     message: null,
     /* 2. Pong */

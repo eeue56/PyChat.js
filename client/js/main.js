@@ -29,7 +29,7 @@ $(document).ready(function () {
     };
 
     /* MESSAGE ARRIVES */
-    Actions.message = function(name, message) {
+    Services.message = function(name, message) {
         console.log("Service: Message");
         var msg = new Message({
             id: "0", // TODO: fix hardcoded ID
@@ -40,12 +40,12 @@ $(document).ready(function () {
 
         var conversation = pyjs.find(".pyjs-conversation")[0];
         $(conversation).append(msg.toHtml());
+        // autoscroll to bottom of chat
         conversation.scrollTop = conversation.scrollHeight;
-        console.log(conversation.scrollHeight);
     };
 
     /* PONG ARRIVES */
-    Actions.pong = function() {
+    Services.pong = function() {
         //console.log("Service: Pong");
         pyjs.find(".pyjs-ping").fadeIn(function() {
             pyjs.find(".pyjs-ping").fadeOut(1000);
@@ -53,12 +53,12 @@ $(document).ready(function () {
     };
     
     /* USERLIST RESPONSE ARRIVES */
-    Actions.userList = function(users) {
+    Services.userList = function(users) {
         console.log("Service: User List");
     };
 
     /* ROOMLIST RESPONSE ARRIVES */
-    Actions.roomList = function(rooms) {
+    Services.roomList = function(rooms) {
         console.log("Service: Room List");
         // Show the rooms list
         $("#room-list").html(util.listBuilder(rooms, "join-room"));
@@ -83,27 +83,27 @@ $(document).ready(function () {
     };
 
     /* A NEW USER CONNECTS */
-    Actions.userConnect = function(name) {
+    Services.userConnect = function(name) {
         console.log("Service: User Connect");
     };
 
     /* A USER DISCONNECTS */
-    Actions.userDisconnect = function(name) {
+    Services.userDisconnect = function(name) {
         console.log("Service: User Disconnect");
     };
 
     /* A NEXT SLIDE REQUEST */
-    Actions.nextSlide = function() {
+    Services.nextSlide = function() {
         console.log("Service: Next Slide");
     };
 
     /* PREVIOUS SLIDE REQUEST */
-    Actions.previousSlide = function() {
+    Services.previousSlide = function() {
         console.log("Service: PreviousSlide");
     };
 
     /* SLIDE JUMP REQUEST */
-    Actions.jumpToSlide = function(number) {
+    Services.jumpToSlide = function(number) {
         console.log("Service: Jump Slide");
     };
 

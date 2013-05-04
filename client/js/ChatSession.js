@@ -101,39 +101,39 @@ var ChatSession = Class.extend({
         switch(res.service) {
             /* 1. Message from user */
             case 1:
-                Actions.message(d.username, d.message);
+                Services.message(d.username, d.message);
                 break;
             /* 2. Pong */
             case 2:
-                Actions.pong();
+                Services.pong();
                 break;
             /* 3. Return Userlist */
             case 3:
-                Actions.userList(d.users);
+                Services.userList(d.users);
                 break;
             /* 4. Return RoomList */
             case 4:
-                Actions.roomList(d.rooms);
+                Services.roomList(d.rooms);
                 break;
             /* 5. User Connect */
             case 5:
-                Actions.userConnect(d.username);
+                Services.userConnect(d.username);
                 break;
             /* 6. User Disconnect */
             case 6:
-                Actions.userDisconnect(d.username);
+                Services.userDisconnect(d.username);
                 break;
             /* 7. Next slide */
             case 7:
-                Actions.nextSlide();
+                Services.nextSlide();
                 break;
             /* 8. Previous slide */
             case 8:
-                Actions.previousSlide();
+                Services.previousSlide();
                 break;
             /* 9. Jump to slide */
             case 9:
-                Actions.jumpToSlide(d.slideNumber);
+                Services.jumpToSlide(d.slideNumber);
                 break;
             default:
                 console.error("Unrecognized Protocol: " 
