@@ -129,3 +129,9 @@
         "request" : 7,
         "data" : slide_number
     }
+
+### 112. Change name
+    {
+        "request" : 112,
+        "data" : "new name"
+    }

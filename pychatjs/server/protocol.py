@@ -8,7 +8,8 @@ requests = {0 : 'join',
             4 : 'roomlist',
             5 : 'next_slide',
             6 : 'previous_slide',
-            7 : 'jump_to_slide'}
+            7 : 'jump_to_slide',
+            112 : 'change_name'}
 
 def create_message(username, message):
     message = message.replace('\n', '<br/>')
