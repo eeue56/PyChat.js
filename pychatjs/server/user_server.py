@@ -2,6 +2,7 @@
 class UsernameInUseException(Exception):
     pass
 
+
 class User(object):
     def __init__(self, name, server):
         self.name = name

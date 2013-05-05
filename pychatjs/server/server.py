@@ -24,7 +24,7 @@ rooms = [Room('Darkness')]
 usernames = ['Shauna', 'Tomuel', 'Darkok', 'Endl', 'Frumo']
 
 
-user_server = UserServer(usernames)
+user_server = UserServer(usernames[:])
 
 
 class WSHandler(tornado.websocket.WebSocketHandler):
