@@ -20,11 +20,10 @@ class User(object):
         try:
             self.server.register_name(username)
         except UsernameInUseException:
-            self.server.register_name(name)
+            self.server.register_name(self.name)
             raise
             
         self.name = username
-
 
 
 class UserServer(object):
