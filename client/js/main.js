@@ -132,16 +132,7 @@ $(document).ready(function () {
         console.log("Service: Jump Slide");
     };
 
-
-    $(".name").show();
-
-    $(".enter").click(function () {
-        var userName = $("#name").val();
-        init(userName);
-        $(".name").fadeOut();
-    });
-
-    pyjs.find(".pyjs-conversation-send").click(function() {
+    sendMessage = function() {
         var msg = pyjs.find(".pyjs-conversation-message").html();
         msg = msg.trim();
         // clear input
@@ -151,6 +142,23 @@ $(document).ready(function () {
             cs.user.name, msg, cs.room);
 
         cs.send(msgReq);
+    };
+
+
+    $(".name").show();
+
+    $(".enter").click(function () {
+        var userName = $("#name").val();
+        init(userName);
+        $(".name").fadeOut();
     });
+
+    $(".pyjs-conversation-message").keypress(function (e) {
+        if (e.which == 13){
+            sendMessage();
+        }
+    });
+
+    pyjs.find(".pyjs-conversation-send").click(sendMessage);
 
 });
