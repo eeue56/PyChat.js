@@ -50,4 +50,5 @@ class UserServer(object):
 
     def release_name(self, username):
         self.temp_names.append(username)
-        self.registered_names.remove(username)
+        if self.is_username_used(username):
+            self.registered_names.remove(username)
