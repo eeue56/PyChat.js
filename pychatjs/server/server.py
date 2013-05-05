@@ -7,26 +7,24 @@ from random import choice
 
 from pychatjs.server.server_exceptions import RoomNotFoundException
 from pychatjs.server.room import *
-
-import logging
-
 from pychatjs.server.connections import ChatConnection
 from pychatjs.server.parser import Parser
 
+import logging
+
+from pychatjs.user_server import User, UserServer 
+
+# default room list - change to add more rooms by default
 rooms = [Room('Darkness')]
 
+# default name list - used to handle multiple connections at once. 
+# the number of *new* connections that can be handled at one time is equal to the
+# number of names in the list
+# anything can be used, however this format allows for easy debugging. 
 usernames = ['Shauna', 'Tomuel', 'Darkok', 'Endl', 'Frumo']
 
 
-class User(object):
-    def __init__(self, name):
-        self.name = name
-
-    def __str__(self):
-        return str(self.name)
-    
-    def release_name(self):
-        usernames.append(self.name)
+user_server = UserServer()
 
 
 class WSHandler(tornado.websocket.WebSocketHandler):
@@ -37,7 +35,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
         # set a temp name
         if len(usernames) > 0:
-            id_ = User(choice(usernames))
+            id_ = User(choice(usernames), user_server)
             usernames.remove(id_.name)
         else:
             id_ = User('Guest {i}'.format(choice('abcdefgjklmnopqrsty')))

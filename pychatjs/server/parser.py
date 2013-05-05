@@ -37,9 +37,8 @@ class Parser(object):
         logging.debug(data)
 
         if request_name == 'join':
-            if conn.id.name != data['username']:
-                conn.id.release_name()
-                conn.id.name = data['username']
+            if conn.id.name != data['username']:                
+                conn.id.change_name(data['username'])
             conn.join_room(data['room'])
             conn._send_to_all_rooms(create_connect(conn.id.name))
 
