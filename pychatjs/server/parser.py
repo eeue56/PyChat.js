@@ -37,8 +37,11 @@ class Parser(object):
         logging.debug(data)
 
         if request_name == 'join':
-            if conn.id.name != data['username']:                
-                conn.id.change_name(data['username'])
+            if conn.id.name != data['username']:   
+                try:             
+                    conn.id.change_name(data['username'])
+                except:
+                    conn.write_message(create_error(1, 'Username was already in use!'))
             conn.join_room(data['room'])
             conn._send_to_all_rooms(create_connect(conn.id.name))
 

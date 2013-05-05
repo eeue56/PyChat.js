@@ -120,6 +120,7 @@
 	1. Message not delivered
         	Error code:
             		0 - Room closed
+                    1 - Username in use
     {
         "errors":[
             {
