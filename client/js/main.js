@@ -2,7 +2,11 @@ $(document).ready(function () {
     window.cs = null;
     var pyjs = $("#pyjs");
 
-    var init = function(userName) {
+    var init = function(userName, avatarUrl) {
+        // create an avatar
+        var avatar = new Image();
+        avatar.src = avatarUrl;
+
         // Create a chat session
         cs = new ChatSession({
             config: {
@@ -12,16 +16,18 @@ $(document).ready(function () {
             },
             user: new User({
                 name: userName,
-                avatar: ""
+                avatar: avatar
             })
         });
 
         // Get the list of rooms 
         // and display them for the user
+        console.log("Getting the roomlist.");
         var roomReq = ServiceBuilder.build.roomList();
         cs.send(roomReq);
 
         // set up a ping
+        console.log("Creating a pinger.")
         setInterval(function() {
             var ping = ServiceBuilder.build.ping();
             cs.send(ping);
@@ -44,6 +50,7 @@ $(document).ready(function () {
         });
 
         var sameBlock = false;
+        console.log(previousMessage);
         if(name == previousMessage.name && 
             previousMessage.expired === false) {
             sameBlock = true;
@@ -103,8 +110,7 @@ $(document).ready(function () {
     Services.userConnect = function(name) {
         console.log("Service: User Connect");
         var li = $("<li></li>")
-        var avatar = new Image();
-        avatar.src = "img/blank.png";
+        var avatar = cs.user.avatar;
         avatar.title = name;
         li.html(avatar);
         $(avatar).addClass("pyjs-avatar");
@@ -132,12 +138,12 @@ $(document).ready(function () {
         console.log("Service: Jump Slide");
     };
 
-
     $(".name").show();
 
     $(".enter").click(function () {
         var userName = $("#name").val();
-        init(userName);
+        var avatarUrl = $("#avatar-url").val();
+        init(userName, avatarUrl);
         $(".name").fadeOut();
     });
 
