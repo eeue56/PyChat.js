@@ -34,11 +34,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         self.write_message('Connected successfully\n')
 
         # set a temp name
-        if len(usernames) > 0:
-            id_ = User(choice(usernames), user_server)
-            usernames.remove(id_.name)
-        else:
-            id_ = User('Guest {i}'.format(choice('abcdefgjklmnopqrsty')))
+        id_ = User(user_server)
 
         self.connection = ChatConnection(id_, self, rooms)
         self.parser = Parser(self.connection)
