@@ -38,7 +38,7 @@ class UserServer(object):
 
     @property
     def temp_name(self):
-        return names.pop(0)
+        return self.temp_names.pop(0)
 
     def is_username_used(self, username):
         return username in self.registered_names
