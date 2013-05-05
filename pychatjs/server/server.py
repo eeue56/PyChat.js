@@ -9,10 +9,10 @@ from pychatjs.server.server_exceptions import RoomNotFoundException
 from pychatjs.server.room import *
 from pychatjs.server.connections import ChatConnection
 from pychatjs.server.parser import Parser
+from pychatjs.server.user_server import User, UserServer 
 
 import logging
 
-from pychatjs.user_server import User, UserServer 
 
 # default room list - change to add more rooms by default
 rooms = [Room('Darkness')]
