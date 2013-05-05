@@ -100,7 +100,7 @@ $(document).ready(function () {
             cs.room = roomName;
 
             pyjs.find(".pyjs-conversation-name").html(roomName);
-
+            
             pyjs.removeClass("disabled");
             $(".rooms").fadeOut();
         });
@@ -143,6 +143,9 @@ $(document).ready(function () {
     $(".enter").click(function () {
         var userName = $("#name").val();
         var avatarUrl = $("#avatar-url").val();
+        if(avatarUrl.length == 0) {
+            avatarUrl = "img/blank.png"
+        }
         init(userName, avatarUrl);
         $(".name").fadeOut();
     });
