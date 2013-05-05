@@ -1,2 +1,0 @@
-class RoomNotFoundException(Exception):
-    pass

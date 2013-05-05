@@ -4,7 +4,9 @@ class UsernameInUseException(Exception):
 
 
 class User(object):
-    def __init__(self, name, server):
+    def __init__(self, server, name=None):
+        if name is None:
+            name = server.temp_name
         self.name = name
         self.server = server
 
@@ -20,19 +22,23 @@ class User(object):
         try:
             self.server.register_name(username)
         except UsernameInUseException:
-            self.server.register_name(name)
+            self.server.register_name(self.name)
             raise
             
         self.name = username
-
 
 
 class UserServer(object):
 
     def __init__(self, names=None):
         if names is None:
-            names = []
-        self.registered_names = names
+            names = ['a', 'b', 'c', 'd', 'e']
+        self.temp_names = names
+        self.registered_names = []
+
+    @property
+    def temp_name(self):
+        return self.temp_names.pop(0)
 
     def is_username_used(self, username):
         return username in self.registered_names
@@ -43,4 +49,6 @@ class UserServer(object):
         self.registered_names.append(username)
 
     def release_name(self, username):
-        self.registered_names.remove(username)
+        self.temp_names.append(username)
+        if self.is_username_used(username):
+            self.registered_names.remove(username)

@@ -37,6 +37,8 @@ class Parser(object):
         logging.debug(data)
 
         if request_name == 'join':
+            logging.debug("Name is " + conn.id.name)
+            logging.debug("Name should be " + data['username'])
             if conn.id.name != data['username']:   
                 try:             
                     conn.id.change_name(data['username'])

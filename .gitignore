@@ -2,4 +2,4 @@
 *.log
 *.sh
 *DS_Store
-
+build/
