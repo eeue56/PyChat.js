@@ -65,6 +65,20 @@
         "data" : slide_number
     }
 
+### 999. Error
+    {
+        "service" : 999
+        "data" : {
+            "code" : error_code,
+            "message" : "error_message"
+        }
+    }
+
+    Error code:
+                    1 - Request not found
+                    2 - Username in use
+
+
 ## Client
 ### Requests
 #### 0. Join
@@ -115,22 +129,3 @@
         "request" : 7,
         "data" : slide_number
     }
-
-### Errors
-	1. Message not delivered
-        	Error code:
-            		0 - Room closed
-                    1 - Username in use
-    {
-        "errors":[
-            {
-                "message":[reason]
-                "code":[code]
-            }
-        ]
-    }
-
-
-
-
-

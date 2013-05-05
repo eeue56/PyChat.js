@@ -18,6 +18,7 @@ class Parser(object):
 
         conn = self.connection
 
+        # check if valid request
         if service is None or service not in requests.keys():
             logging.info('No such request!')
             conn.write_message(create_error('1', 'no such request'))
@@ -25,17 +26,25 @@ class Parser(object):
 
         request_name = requests[service]
 
+        # process requests without data
         if request_name == 'ping':
             conn.write_message(create_pong())
             return
         elif request_name == 'roomlist':
             conn.write_message(create_roomlist(conn.possible_rooms))
             return
+        elif request_name == 'next_slide':
+            room.send_message(create_next_slide())
+        elif request_name == 'previous_slide':
+            room.send_message(create_previous_slide())
+
 
         data = get_data(message)
 
         logging.debug(data)
 
+        # process requests with data
+        
         if request_name == 'join':
             logging.debug("Name is " + conn.id.name)
             logging.debug("Name should be " + data['username'])
@@ -43,7 +52,7 @@ class Parser(object):
                 try:             
                     conn.id.change_name(data['username'])
                 except:
-                    conn.write_message(create_error(1, 'Username was already in use!'))
+                    conn.write_message(create_error(2, 'Username was already in use!'))
             conn.join_room(data['room'])
             conn._send_to_all_rooms(create_connect(conn.id.name))
 
@@ -60,9 +69,6 @@ class Parser(object):
 
             if room is not None:
                 room.send_message(create_message(data['username'], data['message']))
-        elif request_name == 'next_slide':
-            room.send_message(create_next_slide())
-        elif request_name == 'previous_slide':
-            room.send_message(create_previous_slide())
+        
         elif request_name == 'jump_to_slide':
             room.send_message(create_jump_to(data))

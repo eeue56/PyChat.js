@@ -46,7 +46,7 @@ def get_data(message):
 
 def create_error(error_code, error_message):
     error_message = error_message.replace('\n', '<br/>')
-    return dumps({ 'errors': [{'message' : error_message, 'code' : error_code}]})
+    return dumps({ 'service': 999, 'data' : {'message' : error_message, 'code' : error_code}})
 
 services = {1 : create_message,
             2 : create_pong,
@@ -56,7 +56,8 @@ services = {1 : create_message,
             6 : create_disconnect,
             7 : create_next_slide,
             8 : create_previous_slide,
-            9 : create_jump_to}
+            9 : create_jump_to,
+            999 : create_error}
 
 def __test():
     assert loads(create_message('Noah', 'hi')) == {"service":1, "data":{"message":"hi", "username":"Noah"} }
