@@ -29,7 +29,7 @@ def create_userlist(usernames):
     return dumps({'service':3, 'data': {'users' : usernames}})
 
 def create_roomlist(rooms):
-     """ Creates a room list from rooms """
+    """ Creates a room list from rooms """
     return dumps({'service':4, 'data': {'rooms' : [room.name for room in rooms]}})
 
 def create_connect(username):
