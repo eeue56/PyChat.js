@@ -115,7 +115,7 @@ $(document).ready(function () {
         avatar.title = name;
         li.html(avatar);
         $(avatar).addClass("pyjs-avatar");
-        $(avatar).setAttr("id", "avatar-" + name);
+        $(avatar).attr("id", "avatar-" + name);
         pyjs.find(".pyjs-avatars").append(li);
 
     };
