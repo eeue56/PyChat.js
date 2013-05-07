@@ -1,6 +1,7 @@
 import logging
 
 from pychatjs.server.protocol import *
+from pychatjs.server.user_server import UsernameInUseException
 
 
 class Parser(object):
@@ -57,7 +58,7 @@ class Parser(object):
             if conn.id.name != data['username']:   
                 try:             
                     conn.id.change_name(data['username'])
-                except:
+                except UsernameInUseException:
                     conn.write_message(create_error(2, 'Username was already in use!'))
             conn.join_room(data['room'])
             conn._send_to_all_rooms(create_connect(conn.id.name))
