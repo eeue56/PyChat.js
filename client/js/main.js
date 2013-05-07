@@ -134,7 +134,7 @@ $(document).ready(function () {
     /* PREVIOUS SLIDE REQUEST */
     Services.previousSlide = function() {
         console.log("Service: PreviousSlide");
-        SlideShower.previousSlide();
+        SlideShower.prevSlide();
     };
 
     /* SLIDE JUMP REQUEST */

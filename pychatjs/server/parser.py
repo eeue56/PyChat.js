@@ -72,9 +72,6 @@ class Parser(object):
 
             if room is not None:
                 room.send_message(create_message(data['username'], data['message']))
-        
-        elif request_name == 'jump_to_slide':
-            room.send_message(create_jump_to(data))
 
         elif request_name == 'get_user_dump':
             username = data['username']
@@ -94,9 +91,15 @@ class Parser(object):
         elif request_name == 'send_dump':
             for prop, value in data.iteritems():
                 setattr(conn.id, prop, value)
+
         elif request_name == 'next_slide':
             room = conn.get_room(data['room'])
             room.send_message(create_next_slide())
+       
         elif request_name == 'previous_slide':
             room = conn.get_room(data['room'])
             room.send_message(create_previous_slide())
+       
+        elif request_name == 'jump_to_slide':
+            room = conn.get_room(data['room'])
+            room.send_message(create_jump_to(data['slide_number']))
