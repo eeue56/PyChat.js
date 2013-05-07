@@ -4,11 +4,17 @@ from pychatjs.server.protocol import *
 
 
 class Parser(object):
+    """ Parser to be used and extended to handle more things 
 
+        TODO: Change to use dict to allow easy extension"""
     def __init__(self, connection):
         self.connection = connection
 
-    def parse_message(self, message):        
+
+    def parse_message(self, message):  
+        """ Parse a given message and run the command using the 
+            connection and the json protocals """      
+
         service = None
 
         try:
