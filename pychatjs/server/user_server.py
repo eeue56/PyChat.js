@@ -12,6 +12,9 @@ class User(object):
 
     def __str__(self):
         return str(self.name)
+
+    def _to_json(self):
+        return self.__dict__()
     
     def release_name(self):
         self.server.release_name(self.name)

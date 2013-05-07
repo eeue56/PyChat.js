@@ -164,6 +164,14 @@
         }
     }
 
+### 10. Send user dump
+    {
+        "request" : 9,
+        "data" : {
+            "setting name" : "setting value"
+        }
+    }
+
 ### 112. Change name
     {
         "request" : 112,
