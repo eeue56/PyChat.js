@@ -32,6 +32,7 @@ var ChatSession = Class.extend({
                     }
                 });
         } catch (err) {
+	    console.log("Error starting besocket");
             console.error(err);
         }
 
@@ -148,6 +149,7 @@ var ChatSession = Class.extend({
     addRoom: function(room) {
         this.rooms.push(room);
     },
+
     removeRoom: function(roomId) {
        this.rooms.each(function(room, i) {
            if(room.id === roomId) {

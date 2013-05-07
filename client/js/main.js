@@ -5,6 +5,11 @@ $(document).ready(function () {
     var init = function(userName, avatarUrl) {
         // create an avatar
         var avatar = new Image();
+
+	if (typeof avatarUrl === "undefined" || avatarUrl == null){
+            avatarUrl = "img/blank.png";
+	}
+
         avatar.src = avatarUrl;
 
         // Create a chat session
