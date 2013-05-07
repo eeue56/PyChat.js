@@ -12,6 +12,9 @@ class User(object):
 
     def __str__(self):
         return str(self.name)
+
+    def _to_json(self):
+        return self.__dict__
     
     def release_name(self):
         self.server.release_name(self.name)
@@ -43,10 +46,11 @@ class UserServer(object):
     def is_username_used(self, username):
         return username in self.registered_names
 
-    def register_name(self, username):
+    def register_name(self, user, username):
         if self.is_username_used(username):
             raise UsernameInUseException('Username {username} already in use!'.format(username=username))
         self.registered_names.append(username)
+
 
     def release_name(self, username):
         self.temp_names.append(username)

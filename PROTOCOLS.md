@@ -62,12 +62,30 @@
 ### 9. Jump to slide
     {
         "service" : 9,
-        "data" : slide_number
+        "data" : {
+            "slide" : slide_number
+        }
+    }
+
+### 10. User dump
+    {
+        "service" : 10,
+        "data" : {
+            user property name : user value
+        }
+    }
+
+### 11. Users dump
+    {
+        "service" : 11,
+        "data" : {
+            user =[user property name : user value]
+        }
     }
 
 ### 999. Error
     {
-        "service" : 999
+        "service" : 999,
         "data" : {
             "code" : error_code,
             "message" : "error_message"
@@ -77,6 +95,7 @@
     Error code:
                     1 - Request not found
                     2 - Username in use
+                    3 - Username not found  
 
 
 ## Client
@@ -127,11 +146,37 @@
 ### 7. Jump to slide
     {
         "request" : 7,
-        "data" : slide_number
+        "data" : {
+            "slide" : slide_number
+        }
+    }
+### 8. Get user dump
+    {
+        "request" : 8,
+        "data" : {
+            "name" : "user name"
+        }
+    }
+### 9. Get users dump
+    {
+        "request" : 9,
+        "data" : {
+            "room" : "room_name"
+        }
+    }
+
+### 10. Send user dump
+    {
+        "request" : 9,
+        "data" : {
+            "setting name" : "setting value"
+        }
     }
 
 ### 112. Change name
     {
         "request" : 112,
-        "data" : "new name"
+        "data" : {
+            "name" : "new name"
+        }
     }

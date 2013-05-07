@@ -9,6 +9,9 @@ requests = {0 : 'join',
             5 : 'next_slide',
             6 : 'previous_slide',
             7 : 'jump_to_slide',
+            8 : 'get_user_dump',
+            9 : 'get_users_dump',
+            10 : 'send_dump',
             112 : 'change_name'}
 
 def create_message(username, message):
@@ -62,6 +65,12 @@ def create_error(error_code, error_message):
     error_message = error_message.replace('\n', '<br/>')
     return dumps({ 'service': 999, 'data' : {'message' : error_message, 'code' : error_code}})
 
+def create_user_dump(user):
+    return dumps({ 'service' : 10, 'data' : user._to_json()})
+
+def create_users_dump(users):
+    return dumps({ 'service' : 11, 'data' : [user._to_json() for user in users]})
+
 services = {1 : create_message,
             2 : create_pong,
             3 : create_userlist,
@@ -71,6 +80,8 @@ services = {1 : create_message,
             7 : create_next_slide,
             8 : create_previous_slide,
             9 : create_jump_to,
+            10 : create_user_dump,
+            11 : create_users_dump,
             999 : create_error}
 
 def __test():
