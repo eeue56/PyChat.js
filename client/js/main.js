@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     var init = function(userName, avatarUrl) {
         // create an avatar
+
         var avatar = new Image();
 
 	if (typeof avatarUrl === "undefined" || avatarUrl == null){
@@ -148,11 +149,18 @@ $(document).ready(function () {
     $(".enter").click(function () {
         var userName = $("#name").val();
         var avatarUrl = $("#avatar-url").val();
-        if(avatarUrl.length == 0) {
-            avatarUrl = "img/blank.png"
+
+	if (typeof avatarUrl === "undefined" || avatarUrl == null || avatarUrl == ""){
+            avatarUrl = "img/blank.png";
+        }
+	        
+	if (typeof userName === "undefined" || userName == null || userName == ""){
+            alert("Username not valid!");
+	    return;
         }
         init(userName, avatarUrl);
         $(".name").fadeOut();
+        
     });
 
     pyjs.find(".pyjs-conversation-send").click(function() {
@@ -170,15 +178,6 @@ $(document).ready(function () {
 
         cs.send(msgReq);
     };
-
-
-    $(".name").show();
-
-    $(".enter").click(function () {
-        var userName = $("#name").val();
-        init(userName);
-        $(".name").fadeOut();
-    });
 
     $(".pyjs-conversation-message").keypress(function (e) {
         if (e.which == 13){
