@@ -4,18 +4,22 @@ from pychatjs.server.protocol import create_message, create_disconnect
 
 
 class Room(object):
-
+    """ Room class for holding chat connections and room name
+        Acts as room server for now """
     def __init__(self, name=None):
         self.name = name
         self.users = []
 
     def add_user(self, user):
+        """ add a user to users """
         self.users.append(user)
 
     def remove_user(self, user):
         self.users.remove(user)
 
     def disconnect(self, user):
+        """ Disconnect a user and send a message to the 
+            connected clients """
         self.remove_user(user)
         self.send_message(create_disconnect(user.id.name))
 
