@@ -2,13 +2,13 @@
     font-family:"Segoe UI",Calibri,"Myriad Pro",Myriad,"Trebuchet MS",Helvetica,Arial,sans-serif;
     font-size: 10pt;
     width: auto;
-    height: auto;
+    height: 100%;
     padding: 10px;
 }
 
 .pyjs-container {
     width: auto;
-    height: auto;
+    height: 100%;
     padding: 10px;
     overflow: hidden;
     position:relative;
