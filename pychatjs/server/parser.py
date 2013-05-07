@@ -102,4 +102,4 @@ class Parser(object):
        
         elif request_name == 'jump_to_slide':
             room = conn.get_room(data['room'])
-            room.send_message(create_jump_to(data['slide_number']))
+            room.send_message(create_jump_to(data['slideNumber']))
