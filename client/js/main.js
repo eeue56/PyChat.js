@@ -157,14 +157,15 @@ $(document).ready(function () {
         var userName = $("#name").val();
         var avatarUrl = $("#avatar-url").val();
 
-	if (typeof avatarUrl === "undefined" || avatarUrl == null || avatarUrl == ""){
+        if (typeof avatarUrl === "undefined" || avatarUrl == null || avatarUrl == ""){
             avatarUrl = "img/blank.png";
         }
-	        
-	if (typeof userName === "undefined" || userName == null || userName == ""){
+            
+       if (typeof userName === "undefined" || userName == null || userName == ""){
             alert("Username not valid!");
-	    return;
+            return;
         }
+
         init(userName, avatarUrl);
         $(".name").fadeOut();
         
