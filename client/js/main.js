@@ -128,13 +128,13 @@ $(document).ready(function () {
     /* A NEXT SLIDE REQUEST */
     Services.nextSlide = function() {
         console.log("Service: Next Slide");
-        $(".sld-next").click();
+        SlideShower.nextSlide();
     };
 
     /* PREVIOUS SLIDE REQUEST */
     Services.previousSlide = function() {
         console.log("Service: PreviousSlide");
-        $(".sld-prev").click();
+        SlideShower.previousSlide();
     };
 
     /* SLIDE JUMP REQUEST */
