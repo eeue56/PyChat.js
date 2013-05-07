@@ -152,7 +152,7 @@ $(document).ready(function () {
 
     pyjs.find(".pyjs-conversation-send").click(function() {
         sendMessage();
-    };
+    });
 
     var sendMessage = function() {
         var msg = pyjs.find(".pyjs-conversation-message").html();
