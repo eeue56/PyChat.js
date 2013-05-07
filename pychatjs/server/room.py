@@ -23,6 +23,12 @@ class Room(object):
         self.remove_user(user)
         self.send_message(create_disconnect(user.id.name))
 
+    def get_user(self, username):
+        for user in self.users:
+            if user.name == username:
+                return user
+        return None
+
     @property
     def get_users_connected(self):
         return self.users
