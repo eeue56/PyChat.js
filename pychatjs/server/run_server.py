@@ -23,7 +23,6 @@ rooms = [Room('Darkness')]
 # anything can be used, however this format allows for easy debugging. 
 usernames = ['Shauna', 'Tomuel', 'Darkok', 'Endl', 'Frumo']
 
-
 user_server = UserServer(usernames[:])
 
 
