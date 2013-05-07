@@ -40,7 +40,6 @@ class Parser(object):
         elif request_name == 'roomlist':
             conn.write_message(create_roomlist(conn.possible_rooms))
             return
-        
 
 
         data = get_data(message)
@@ -96,8 +95,8 @@ class Parser(object):
             for prop, value in data.iteritems():
                 setattr(conn.id, prop, value)
         elif request_name == 'next_slide':
-            room = data['room']
+            room = conn.get_room(data['room'])
             room.send_message(create_next_slide())
         elif request_name == 'previous_slide':
-            room = data['room']
+            room = conn.get_room(data['room'])
             room.send_message(create_previous_slide())
