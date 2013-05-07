@@ -95,6 +95,7 @@
     Error code:
                     1 - Request not found
                     2 - Username in use
+                    3 - Username not found  
 
 
 ## Client

@@ -1,6 +1,7 @@
 import logging
 
 from pychatjs.server.protocol import *
+from pychatjs.server.user_server import UsernameInUseException
 
 
 class Parser(object):
@@ -57,7 +58,7 @@ class Parser(object):
             if conn.id.name != data['username']:   
                 try:             
                     conn.id.change_name(data['username'])
-                except:
+                except UsernameInUseException:
                     conn.write_message(create_error(2, 'Username was already in use!'))
             conn.join_room(data['room'])
             conn._send_to_all_rooms(create_connect(conn.id.name))
@@ -78,3 +79,22 @@ class Parser(object):
         
         elif request_name == 'jump_to_slide':
             room.send_message(create_jump_to(data))
+
+        elif request_name == 'get_user_dump':
+            username = data['username']
+            for room in conn.possible_rooms:
+                if room.get_user(username) is not None:
+                    conn.write_message(create_user_dump(room.get_user(username)))
+                    break
+            else:
+                conn.write_message(create_error(3, 'User not found in any active rooms'))
+
+        elif request_name == 'get_users_dump':
+            room = conn.get_room(data['room'])
+
+            if room is not None: 
+                conn.write_message(create_users_dump(room.get_users_connected))
+
+        elif request_name == 'send_dump':
+            for prop, value in data.iteritems():
+                setattr(conn.id, prop, value)

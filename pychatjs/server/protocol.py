@@ -11,6 +11,7 @@ requests = {0 : 'join',
             7 : 'jump_to_slide',
             8 : 'get_user_dump',
             9 : 'get_users_dump',
+            10 : 'send_dump',
             112 : 'change_name'}
 
 def create_message(username, message):
@@ -28,7 +29,7 @@ def create_userlist(usernames):
     return dumps({'service':3, 'data': {'users' : usernames}})
 
 def create_roomlist(rooms):
-     """ Creates a room list from rooms """
+    """ Creates a room list from rooms """
     return dumps({'service':4, 'data': {'rooms' : [room.name for room in rooms]}})
 
 def create_connect(username):
@@ -67,7 +68,7 @@ def create_error(error_code, error_message):
 def create_user_dump(user):
     return dumps({ 'service' : 10, 'data' : user._to_json()})
 
-def create_user_dumps(users):
+def create_users_dump(users):
     return dumps({ 'service' : 11, 'data' : [user._to_json() for user in users]})
 
 services = {1 : create_message,
@@ -80,6 +81,7 @@ services = {1 : create_message,
             8 : create_previous_slide,
             9 : create_jump_to,
             10 : create_user_dump,
+            11 : create_users_dump,
             999 : create_error}
 
 def __test():

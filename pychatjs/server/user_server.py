@@ -14,7 +14,7 @@ class User(object):
         return str(self.name)
 
     def _to_json(self):
-        return self.__dict__()
+        return self.__dict__
     
     def release_name(self):
         self.server.release_name(self.name)
@@ -25,6 +25,7 @@ class User(object):
         try:
             self.server.register_name(username)
         except UsernameInUseException:
+            logging.log(', '.join(self.server.registered_names))
             self.server.register_name(self.name)
             raise
             
@@ -50,6 +51,7 @@ class UserServer(object):
         if self.is_username_used(username):
             raise UsernameInUseException('Username {username} already in use!'.format(username=username))
         self.registered_names.append(username)
+
 
     def release_name(self, username):
         self.temp_names.append(username)
