@@ -58,16 +58,22 @@ var ServiceBuilder = {
             return ServiceBuilder.create(json);
         },
 
-        nextSlide: function () {
+        nextSlide: function (room) {
             var json = {
                 request: 5,
+                data: {
+                    room: room
+                }
             };
             return ServiceBuilder.create(json);
         }, 
 
-        previousSlide: function () {
+        previousSlide: function (room) {
             var json = {
-                request: 6
+                request: 6,
+                data: {
+                    room: room
+                }
             };
             return ServiceBuilder.create(json);
         },  

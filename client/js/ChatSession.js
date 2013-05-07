@@ -64,11 +64,11 @@ var ChatSession = Class.extend({
                 self.send(json);
             },
             nextSlide : function() {
-                var json = ServiceBuilder.build.nextSlide();
+                var json = ServiceBuilder.build.nextSlide(self.room);
                 self.send(json);
             },
             previousSlide : function() {
-                var json = ServiceBuilder.build.previousSlide();
+                var json = ServiceBuilder.build.previousSlide(self.room);
                 self.send(json);
             },
             jumpToSlide : function() { 
