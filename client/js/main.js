@@ -122,7 +122,7 @@ $(document).ready(function () {
 
     /* A USER DISCONNECTS */
     Services.userDisconnect = function(name) {
-        
+        $("avatar-" + name).remove();
     };
 
     /* A NEXT SLIDE REQUEST */
