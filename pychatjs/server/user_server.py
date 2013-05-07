@@ -25,6 +25,7 @@ class User(object):
         try:
             self.server.register_name(username)
         except UsernameInUseException:
+            logging.log(', '.join(self.server.registered_names))
             self.server.register_name(self.name)
             raise
             
