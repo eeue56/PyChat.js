@@ -139,6 +139,18 @@ $(document).ready(function () {
         console.log("Service: Jump Slide");
     };
 
+    var sendMessage = function() {
+        var msg = pyjs.find(".pyjs-conversation-message").html();
+        msg = msg.trim();
+        // clear input
+        pyjs.find(".pyjs-conversation-message").html("");
+
+        var msgReq = ServiceBuilder.build.message(
+            cs.user.name, msg, cs.room);
+
+        cs.send(msgReq);
+    };
+
     $(".name").show();
 
     $(".enter").click(function () {
@@ -158,21 +170,7 @@ $(document).ready(function () {
         
     });
 
-    pyjs.find(".pyjs-conversation-send").click(function() {
-        sendMessage();
-    });
-
-    var sendMessage = function() {
-        var msg = pyjs.find(".pyjs-conversation-message").html();
-        msg = msg.trim();
-        // clear input
-        pyjs.find(".pyjs-conversation-message").html("");
-
-        var msgReq = ServiceBuilder.build.message(
-            cs.user.name, msg, cs.room);
-
-        cs.send(msgReq);
-    };
+    pyjs.find(".pyjs-conversation-send").click(sendMessage);
 
     $(".pyjs-conversation-message").keypress(function (e) {
         if (e.which == 13){
@@ -185,7 +183,4 @@ $(document).ready(function () {
             $(".pyjs-conversation-message").empty()
         }
     });
-
-    pyjs.find(".pyjs-conversation-send").click(sendMessage);
-
 });
