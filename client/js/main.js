@@ -186,6 +186,12 @@ $(document).ready(function () {
         }
     });
 
+    $(".pyjs-conversation-message").click(function () {
+        if ($(".pyjs-conversation-message").val() == "Enter message"){
+            $(".pyjs-conversation-message").empty()
+        }
+    });
+
     pyjs.find(".pyjs-conversation-send").click(sendMessage);
 
 });
