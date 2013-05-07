@@ -71,9 +71,8 @@ var ChatSession = Class.extend({
                 var json = ServiceBuilder.build.previousSlide(self.room);
                 self.send(json);
             },
-            jumpToSlide : function() { 
+            jumpToSlide : function(slideNumber) { 
                 // TODO: replace hardcoded slidenumber with actual slide number
-                var slideNumber = 5;
                 var json = ServiceBuilder.build.jumpToSlide(slideNumber);
                 self.send(json);
             },
