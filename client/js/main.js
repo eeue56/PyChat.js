@@ -57,6 +57,7 @@ $(document).ready(function () {
             sameBlock = true;
         } else {
             previousMessage.name = name;
+            previousMessage.expired = false;
             // end the current block in 10 seconds
             setTimeout(function() {
                 previousMessage.expired = true;
@@ -117,7 +118,6 @@ $(document).ready(function () {
         $(avatar).addClass("pyjs-avatar");
         $(avatar).attr("id", "avatar-" + name);
         pyjs.find(".pyjs-avatars").append(li);
-
     };
 
     /* A USER DISCONNECTS */
