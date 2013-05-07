@@ -21,6 +21,7 @@ class Room(object):
         """ Disconnect a user and send a message to the 
             connected clients """
         self.remove_user(user)
+        self.send_message(create_message('RoomServer', 'Please all say goodbye to {name}!'.format(name=user.id.name)))
         self.send_message(create_disconnect(user.id.name))
 
     def get_user(self, username):

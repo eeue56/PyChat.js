@@ -121,7 +121,7 @@ $(document).ready(function () {
 
     /* A USER DISCONNECTS */
     Services.userDisconnect = function(name) {
-        console.log("Service: User Disconnect");
+        
     };
 
     /* A NEXT SLIDE REQUEST */
