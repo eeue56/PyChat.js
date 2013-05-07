@@ -181,7 +181,7 @@ $(document).ready(function () {
     });
 
     $(".pyjs-conversation-message").click(function () {
-        if ($(".pyjs-conversation-message").val().toLowerCase() == "enter message"){
+        if ($.trim($(".pyjs-conversation-message").text().toLowerCase()) == "enter message"){
             $(".pyjs-conversation-message").empty()
         }
     });

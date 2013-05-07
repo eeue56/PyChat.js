@@ -15,7 +15,7 @@ import logging
 
 
 # default room list - change to add more rooms by default
-rooms = [Room('Darkness')]
+rooms = [Room('Darkness'), Room('Lightness'), Room('Official')]
 
 # default name list - used to handle multiple connections at once. 
 # the number of *new* connections that can be handled at one time is equal to the
