@@ -79,6 +79,9 @@ var ServiceBuilder = {
         },  
 
         jumpToSlide: function (slideNumber, room) {
+            console.log("Jump to slide");
+            console.log("Slide number : " + slideNumber);
+            console.log("Room : " + room);
             var json = {
                 request: 7,
                 data: {
