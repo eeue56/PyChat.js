@@ -50,7 +50,7 @@ def create_previous_slide():
 
 def create_jump_to(slide_number):
     """ Creates a jump to given slide number """
-    return dumps({'service' : 9, 'data' : slide_number})
+    return dumps({'service' : 9, 'data' : {'slideNumber' : slide_number}})
 
 def get_service(message):
     """ Gets the request from the message """
