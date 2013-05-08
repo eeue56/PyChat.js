@@ -78,7 +78,7 @@ var ServiceBuilder = {
             return ServiceBuilder.create(json);
         },  
 
-        jumpToSlide: function (slideNumber) {
+        jumpToSlide: function (slideNumber, room) {
             var json = {
                 request: 7,
                 data: {
