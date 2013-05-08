@@ -133,6 +133,8 @@ var ChatSession = Class.extend({
                 break;
             /* 9. Jump to slide */
             case 9:
+                console.log("D is ");
+                console.log(d);
                 Services.jumpToSlide(d.slideNumber);
                 break;
             default:
