@@ -4,4 +4,14 @@ PyChat.js
 PyChat.js is a chat client/server application using a Python backend (tornado) and a Javascript frontend, designed to be lightweight and extendable.
 
 
-We are using nginx as a server with HAProxy in order to redirect connections to the websockets provided by Tornado. Supervisor is being used in order to manage tornado instances. The database engine is SQLite but this can easily be changed.
+By default, PyChat.js listens on port 8000.
+
+To set it up, either run the run_server.py file or have a file that contains
+    import tornado.ioloop
+    
+    from pychatjs.server.run_server import application 
+    
+    application.listen(8000)
+    tornado.ioloop.IOLoop.instance().start()
+    
+There is a sample chat cl
