@@ -1,12 +1,17 @@
 PyChat.js
 =========
 
+Implementation notes
+====
+
 PyChat.js is a chat client/server application using a Python backend (tornado) and a Javascript frontend, designed to be lightweight and extendable.
 At the moment we're using websockets only - there is plans to enable the fallback ajax of graceful-websockets but it has not been done yet.
 Because we use websockets, the performance of the server is very fast - almost instantiously. At the moment it doesn't support any version of Internet Explorer
 Graceful-websockets it a little outdated for our use, and we will be looking into moving to a different provider for websocket support.
 
 
+How do use it 
+====
 
 By default, PyChat.js listens on port 8000.
 
