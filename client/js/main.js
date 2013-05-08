@@ -140,6 +140,7 @@ $(document).ready(function () {
     /* SLIDE JUMP REQUEST */
     Services.jumpToSlide = function(number) {
         console.log("Service: Jump Slide");
+        console.log("Number is current " + number);
         SlideShower.updateSlideNumber(number);
     };
 

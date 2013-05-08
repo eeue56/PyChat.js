@@ -73,6 +73,7 @@ var ChatSession = Class.extend({
             },
             jumpToSlide : function(slideNumber) { 
                 // TODO: replace hardcoded slidenumber with actual slide number
+                console.log("Chat session: " + slideNumber);
                 var json = ServiceBuilder.build.jumpToSlide(slideNumber, self.room);
                 self.send(json);
             },
