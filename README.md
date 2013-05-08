@@ -13,6 +13,12 @@ Graceful-websockets it a little outdated for our use, and we will be looking int
 How do use it 
 ====
 
+To install it, either grab a copy of this repo or use 
+
+     pip install pychatjs
+
+if you just want the server.
+
 By default, PyChat.js listens on port 8000.
 
 To set it up, either run the run_server.py file or have a file that contains
