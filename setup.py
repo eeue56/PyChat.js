@@ -3,10 +3,11 @@
 from distutils.core import setup
 
 setup(name='pychatjs',
-      version='1.0.0.1',
+      version='1.0.0.5',
       description='Python chat written using tornado and graceful-websockets',
       author='Noah Hall',
       author_email='enalicho@gmail.com',
-      url='http://github.com/AstralDynamics/PyChat.js',
+      url='https://github.com/AstralDynamics/PyChat.js/archive/master.zip',
       packages=['pychatjs', 'pychatjs/server'],
+      requires=['tornado'],
      )
