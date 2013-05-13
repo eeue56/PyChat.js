@@ -50,7 +50,7 @@ class Parser(object):
         self.functions[request_name](data)
 
     def ping(data):
-    conn.write_message(create_pong())
+        conn.write_message(create_pong())
 
     def roomlist(data):
         conn.write_message(create_roomlist(conn.possible_rooms))
