@@ -167,9 +167,16 @@
 
 ### 10. Send user dump
     {
-        "request" : 9,
+        "request" : 10,
         "data" : {
             "setting name" : "setting value"
+        }
+    }
+
+### 11. Get current user dump
+    {
+        "request" : 11,
+        "data" : {
         }
     }
 

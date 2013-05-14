@@ -80,7 +80,10 @@ class Parser(object):
                     conn.write_message(create_user_dump(room.get_user(username)))
                     break
             else:
-                conn.write_message(create_error(3, 'User not found in any active rooms'))
+                if username == conn.id.name:
+                    conn.write_message(create_user_dump(conn.id))
+                else:
+                    conn.write_message(create_error(3, 'User not found in any active rooms'))
 
         elif request_name == 'get_users_dump':
             room = conn.get_room(data['room'])
@@ -89,8 +92,7 @@ class Parser(object):
                 conn.write_message(create_users_dump(room.get_users_connected))
 
         elif request_name == 'send_dump':
-            for prop, value in data.iteritems():
-                setattr(conn.id, prop, value)
+            conn.id._load_from_json(data)
 
         elif request_name == 'next_slide':
             room = conn.get_room(data['room'])

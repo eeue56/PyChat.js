@@ -16,6 +16,10 @@ class User(object):
     def _to_json(self):
         """ Gets a dict of this object's properties so that it can be used to send a dump to the client """
         return self.__dict__
+
+    def _load_from_json(self, properties):
+        for proper, value in properties.iteritems():
+            setattr(self, proper, value)
     
     def release_name(self):
         """ release the username from the user server """
