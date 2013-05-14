@@ -118,7 +118,8 @@ var ServiceBuilder = {
             for (var key in user){
                 dict.push({key : user[key]});
             }
-
+            console.log("sending user dump");
+            console.log(dict);
             var json = {
                 request: 10,
                 data: {
