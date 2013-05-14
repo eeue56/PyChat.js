@@ -90,6 +90,61 @@ var ServiceBuilder = {
                 }
             };
             return ServiceBuilder.create(json);
+        },
+
+        getUserDump : function (username) {
+            var json = {
+                request: 8,
+                data {
+                    username: username
+                }
+            };
+            return ServiceBuilder.create(json);
+        },
+
+        getUsersDump : function (room) {
+            var json = {
+                request: 9,
+                data {
+                    room: room
+                }
+            };
+            return ServiceBuilder.create(json);
+        },
+
+        sendUserDump : function (user){
+            var dict = [];
+
+            for (var key in user){
+                dict.push({key : user[key]});
+            }
+
+            var json = {
+                request: 10,
+                data {
+                    properties: dict;
+                }
+            };
+            return ServiceBuilder.create(json);
+        },
+
+        getCurrentUserDump : function(){
+            var json = {
+                request: 11,
+                data {
+                }
+            };
+            return ServiceBuilder.create(json);
+        },
+
+        changeName : function (newName){
+            var json = {
+                request: 112,
+                data {
+                    name: newName
+                }
+            };
+            return ServiceBuilder.create(json);
         }
     }
 };

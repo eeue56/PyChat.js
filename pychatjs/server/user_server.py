@@ -18,7 +18,8 @@ class User(object):
         return self.__dict__
 
     def _load_from_json(self, properties):
-        for proper, value in properties.iteritems():
+        for d in  properties:
+            proper, value = d.items()[0]
             setattr(self, proper, value)
     
     def release_name(self):
