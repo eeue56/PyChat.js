@@ -122,7 +122,7 @@ var ServiceBuilder = {
             var json = {
                 request: 10,
                 data: {
-                    properties: dict;
+                    properties: dict
                 }
             };
             return ServiceBuilder.create(json);
