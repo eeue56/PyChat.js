@@ -95,7 +95,7 @@ var ServiceBuilder = {
         getUserDump : function (username) {
             var json = {
                 request: 8,
-                data {
+                data: {
                     username: username
                 }
             };
@@ -105,7 +105,7 @@ var ServiceBuilder = {
         getUsersDump : function (room) {
             var json = {
                 request: 9,
-                data {
+                data: {
                     room: room
                 }
             };
@@ -121,7 +121,7 @@ var ServiceBuilder = {
 
             var json = {
                 request: 10,
-                data {
+                data: {
                     properties: dict;
                 }
             };
@@ -131,7 +131,7 @@ var ServiceBuilder = {
         getCurrentUserDump : function(){
             var json = {
                 request: 11,
-                data {
+                data: {
                 }
             };
             return ServiceBuilder.create(json);
@@ -140,7 +140,7 @@ var ServiceBuilder = {
         changeName : function (newName){
             var json = {
                 request: 112,
-                data {
+                data: {
                     name: newName
                 }
             };
