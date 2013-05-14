@@ -113,17 +113,13 @@ var ServiceBuilder = {
         },
 
         sendUserDump : function (user){
-            var dict = [];
 
-            for (var key in user){
-                dict.push({key : user[key]});
-            }
             console.log("sending user dump");
-            console.log(dict);
             var json = {
                 request: 10,
                 data: {
-                    properties: dict
+                    properties: [{name : user.name },
+                                 {avatar : user.avatar}]
                 }
             };
             return ServiceBuilder.create(json);
