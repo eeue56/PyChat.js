@@ -32,6 +32,9 @@ $(document).ready(function () {
             var ping = ServiceBuilder.build.ping();
             cs.send(ping);
         }, 20000);
+
+        var sendDump = ServiceBuilder.build.sendUserDump(cs.user);
+        cs.send(sendDump);
     };
 
     var previousMessage = {

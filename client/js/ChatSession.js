@@ -72,9 +72,28 @@ var ChatSession = Class.extend({
                 self.send(json);
             },
             jumpToSlide : function(slideNumber) { 
-                // TODO: replace hardcoded slidenumber with actual slide number
                 console.log("Chat session: " + slideNumber);
                 var json = ServiceBuilder.build.jumpToSlide(slideNumber, self.room);
+                self.send(json);
+            },
+            getUserDump : function(username){
+                var json = ServiceBuilder.build.getUserDump(username);
+                self.send(json);
+            },
+            getUsersDump : function(){
+                var json = ServiceBuilder.build.getUsersDump(self.room);
+                self.send(json);
+            },
+            sendUserDump : function(){
+                var json = ServiceBuilder.build.sendUserDump(self.user);
+                self.send(json);
+            },
+            getCurrentUserDump : function(){
+                var json = ServiceBuilder.build.getCurrentUserDump();
+                self.send(json);
+            },
+            changeName : function(username){
+                var json = ServiceBuilder.build.changeName(username);
                 self.send(json);
             },
         };
@@ -138,6 +157,7 @@ var ChatSession = Class.extend({
                 Services.jumpToSlide(d.slideNumber);
                 break;
             default:
+                console.log(d);
                 console.error("Unrecognized Protocol: " 
                     + res.service);
         }
