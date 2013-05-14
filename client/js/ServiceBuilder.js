@@ -118,7 +118,7 @@ var ServiceBuilder = {
 
             for (var key in user){
                 var k = {};
-                k[key] = obj[key];
+                k[key] = user[key];
                 dict.push(k);
             }
 
