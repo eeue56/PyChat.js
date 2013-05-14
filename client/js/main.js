@@ -33,8 +33,8 @@ $(document).ready(function () {
             cs.send(ping);
         }, 20000);
 
-        var sendDump = ServiceBuilder.build.sendUserDump(cs.user);
-        cs.send(sendDump);
+
+        cs.requests.sendUserDump();
     };
 
     var previousMessage = {
