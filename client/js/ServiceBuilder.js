@@ -127,7 +127,14 @@ var ServiceBuilder = {
             var json = {
                 request: 10,
                 data: {
-                    properties: dict
+                    properties: [ {
+                        name : user.name
+                    },
+                    {
+                        avatar : user.avatar.src
+                    }
+
+                    ]
                 }
             };
             return ServiceBuilder.create(json);
