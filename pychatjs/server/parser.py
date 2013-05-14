@@ -22,6 +22,8 @@ class Parser(object):
             'previous_slide' : self.previous_slide,
             'request_name' : self.request_name}
 
+    def add_protocol(self, name, function):
+        self.functions[name] = function
 
     def parse_message(self, message):  
         """ Parse a given message and run the command using the 
