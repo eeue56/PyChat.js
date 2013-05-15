@@ -114,14 +114,14 @@ $(document).ready(function () {
     /* A NEW USER CONNECTS */
     Services.userConnect = function(name) {
         console.log("Service: User Connect");
-        var li = $("<li></li>")
+        /*var li = $("<li></li>")
         var avatar = cs.user.avatar;
         avatar.title = name;
         li.html(avatar);
         $(avatar).addClass("pyjs-avatar");
         $(avatar).attr("id", "avatar-" + name);
         pyjs.find(".pyjs-avatars").append(li);
-
+        */
         cs.requests.getUsersDump();
     };
 
