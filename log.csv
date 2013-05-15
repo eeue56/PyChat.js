@@ -1,0 +1,137 @@
+bc49d66,Dan,5 days ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+86e4905,eeue56,5 days ago,adding binding for enter key
+b40cbb9,Dan,5 days ago,Added avatars for the local user
+86624c2,eeue56,5 days ago,fixing username issue
+06e0970,eeue56,5 days ago,debuging
+bb3efeb,eeue56,5 days ago,fixing typo
+f4b3ed2,Dan,5 days ago,Added avatars
+394d897,eeue56,5 days ago,fixing MEN-39
+ac32f70,eeue56,5 days ago,renaming server
+537d599,eeue56,5 days ago,cleaning up files
+572cde3,eeue56,5 days ago,added error for username in use
+385388e,eeue56,5 days ago,fixed user server
+a6a4901,eeue56,5 days ago,fixing and changing whitespace
+826dfb5,eeue56,5 days ago,fixing
+025386c,eeue56,5 days ago,working on issue MEN-38
+74819ed,Dan Prince,6 days ago,Fixed line wrapping
+3bd898e,Dan Prince,6 days ago,Fully working chat
+e87d1ff,Dan Prince,7 days ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+180a61b,Dan Prince,7 days ago,Renamed actions to services
+f40cf1b,eeue56,7 days ago,fixed silly dict error
+363b1f9,eeue56,7 days ago,Merge branch 'master' of https://github.com/AstralDynamics/PyChat.js
+5a2ea1f,eeue56,7 days ago,fixed silly object error
+b21bd3b,Dan Prince,7 days ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+2600711,Dan Prince,7 days ago,Some CSS fixes
+c230773,eeue56,7 days ago,adding connect/disconnect to main app
+a3088c4,eeue56,7 days ago,changing newline handling and username support
+b2a50da,Dan Prince,7 days ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+dc49fa8,Dan Prince,7 days ago,Added a visual pinger and applied some fixes
+8a0dfad,eeue56,7 days ago,fixed issue with unicode
+954edb0,eeue56,7 days ago,bug fixes
+95bb380,eeue56,7 days ago,fixing rooms to allow multiple new-rooms
+d4abea0,eeue56,7 days ago,data
+db22973,eeue56,7 days ago,added debugs for dan
+3b109bb,Dan Prince,7 days ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+8bc2b46,Dan Prince,7 days ago,Incoming messages linked to interface
+c8a6948,eeue56,7 days ago,syntax error
+a49e45f,eeue56,7 days ago,escaped strings
+56a1b1b,eeue56,7 days ago,fixing issues with whitespace in json
+b8fdd65,eeue56,7 days ago,fixing so new rooms are generated as requested
+2908850,eeue56,7 days ago,working on custom naming
+bd33d12,Dan Prince,7 days ago,Attached modals to ChatSession and main.js
+629e23c,eeue56,7 days ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+c1fa277,eeue56,7 days ago,fixed to returning array instead of string
+f9797dc,Dan Prince,7 days ago,Client Update
+e1291f3,eeue56,7 days ago,forgot semicolon
+f7ba741,eeue56,7 days ago,adding requests to client side andsending pings frequently
+ffa4d0d,eeue56,7 days ago,added more requests to service builder
+fdf9e9e,eeue56,7 days ago,added support for slides
+c1be56b,Dan,8 days ago,Restored lost changes
+7445620,eeue56,9 days ago,fixing durp
+5e07356,subsidel,9 days ago,Update get_slides.php
+164978d,subsidel,9 days ago,Create get_slides.php
+27a5761,eeue56,9 days ago,adding setup and restructuring layout
+b10e5de,eeue56,9 days ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+0c6dd4e,eeue56,9 days ago,working on MEN-33
+e61dbde,Dan Prince,9 days ago,Removed duplicate js files
+7872996,Dan Prince,9 days ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+602a79a,subsidel,3 weeks ago,Rename connection.py to database_interface.py
+682f8d3,subsidel,3 weeks ago,Create connection.py
+6fb78c3,Peter Butcher,3 weeks ago,Added disabled classes for dark and light theme
+2cb0bed,eeue56,3 weeks ago,working on bug MEN-32, issue resolved
+69ab90c,eeue56,3 weeks ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+ac2bb60,eeue56,3 weeks ago,updating pyjs.css for peter
+089f990,lilrooness,3 weeks ago,Fixed broken links on Index.html
+9294709,Dan Prince,7 weeks ago,Added to gitignor
+4075822,eeue56,7 weeks ago,Update .gitignore
+892151c,eeue56,7 weeks ago,minor bug fixes
+9353b6f,eeue56,7 weeks ago,Merge branch 'master' of https://github.com/AstralDynamics/PyChat.js
+1b7ae41,eeue56,7 weeks ago,updated room to work with new protocol
+e7efbc6,eeue56,7 weeks ago,added file for protocol handling
+dd3996d,eeue56,7 weeks ago,moved parsing out into parser
+4d231dc,eeue56,7 weeks ago,moved chat connection out of server
+c28e215,eeue56,7 weeks ago,stripped out functionality
+2a6b189,eeue56,7 weeks ago,Updated the userlist command to work for rooms
+4054753,Dan Prince,7 weeks ago,Moved JSON_templates.txt to PROTOCOLS.md
+5c7022a,Dan Prince,7 weeks ago,Client fixes and ported the JSON templates to protocols.md
+07bd59d,subsidel,7 weeks ago,Update autocomplete.js
+a031766,subsidel,7 weeks ago,Create autocomplete.js
+395e0b4,eeue56,7 weeks ago,adding
+933261a,eeue56,7 weeks ago,updating timeout
+b0f6fd7,eeue56,7 weeks ago,adding pong
+26e2dc8,eeue56,7 weeks ago,change ping
+a89e976,Dan Prince,7 weeks ago,Re-designed client side chat to make multiple rooms work with one socket
+7847039,lilrooness,7 weeks ago,moved location of JSON template, and chaged it to include room ID's in all outbound server messages
+c265e3f,lilrooness,7 weeks ago,failed to add new folder in previous commit, rectifying
+517453d,lilrooness,7 weeks ago,Added documentation folder and created a flow chart describing join room process
+aa748f6,Dan Prince,7 weeks ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+b8d2780,Dan Prince,7 weeks ago,Created the foundations for the client side chat
+581b49e,lilrooness,7 weeks ago,edited templete, got rid of logged in object and the relavent error code
+b8c8427,lilrooness,7 weeks ago,loggin request not needed in template - template changed
+390724f,eeue56,7 weeks ago,no change
+16b6f4b,eeue56,7 weeks ago,bug fixes
+5ac87d6,eeue56,7 weeks ago,working server now
+55e56c2,eeue56,7 weeks ago,updated with bug fixes
+61e3fa8,eeue56,7 weeks ago,updated to log more
+a35147f,eeue56,7 weeks ago,added workaround method for different handlers
+77e5c7f,eeue56,7 weeks ago,durp
+538c5e6,eeue56,7 weeks ago,adding gitignore
+d9dc1f8,eeue56,7 weeks ago,minor fixes
+229645a,eeue56,7 weeks ago,minor bug fix
+8d80f54,eeue56,7 weeks ago,minor bug fix
+022ea6f,eeue56,7 weeks ago,updated server to work with fallback mode
+f378aaa,lilrooness,8 weeks ago,Added target room data to send message template
+b86dfee,lilrooness,8 weeks ago,fixed messed up template caused by weird push
+c877c15,lilrooness,8 weeks ago,added commands ping, join and the service pong
+890f827,lilrooness,8 weeks ago,added commands ping, join and the service pong
+e4758f5,eeue56,8 weeks ago,updating messages
+26da1e1,eeue56,8 weeks ago,Why wont this work?
+fdf57ac,eeue56,8 weeks ago,updating server
+7fbac6f,eeue56,8 weeks ago,updated haproxy to work slightly better and log
+f5baaab,eeue56,8 weeks ago,renamed to stop interferring with python exceptions
+3922bd7,eeue56,8 weeks ago,adding haproxy config
+a8c834d,eeue56,8 weeks ago,adding configs to our repo
+23e8190,eeue56,8 weeks ago,updated readme a bit
+577e624,eeue56,8 weeks ago,something to do with Mac I guess? not needed
+59262f5,eeue56,8 weeks ago,updated to work with rooms, added logging
+66813ed,eeue56,8 weeks ago,Adding a room class - this is where most of the handling of clients will be done, but it will be abstract from the actual connections
+0621168,eeue56,8 weeks ago,adding exceptions file
+0bda6b6,Lilrooness,8 weeks ago,Fixed small typo
+08ca7d4,lilrooness,8 weeks ago,added JSON template in server folder called JSON_Template.txt
+7a54138,lilrooness,8 weeks ago,Able to add rooms users and messages using functions from updates.py
+5d0c60e,eeue56,8 weeks ago,adding dan and peterss work on the client
+62c1e2f,eeue56,8 weeks ago,No need to provide send time, the DB can do that for you
+5d1e5ed,eeue56,8 weeks ago,rename fields
+0dc253d,eeue56,8 weeks ago,rename
+a9f0cae,eeue56,8 weeks ago,updated to python conventions and minor fixes
+49fa6c7,lilrooness,8 weeks ago,New update class for updating database
+6bbb8f9,eeue56,8 weeks ago,adding nick parsing
+65385b2,eeue56,8 weeks ago,added html file to test server
+2fe0f90,eeue56,8 weeks ago,updated database installer
+febe5db,eeue56,8 weeks ago,Merge branch 'master' of github.com:AstralDynamics/PyChat.js
+b0a0a8d,eeue56,8 weeks ago,updated handling of clients
+db23725,lilrooness,8 weeks ago,Added database setup files
+c2f2348,eeue56,8 weeks ago,updating to select from users
+173ab1e,eeue56,8 weeks ago,adding stuff
+ebf24e5,eeue56,8 weeks ago,added base server
+56cdf45,eeue56,8 weeks ago,Initial commit

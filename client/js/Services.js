@@ -16,5 +16,9 @@ var Services = {
     /* 8. Previous slide */
     previousSlide: null,
     /* 9. Jump to slide */
-    jumpToSlide: null
+    jumpToSlide: null,
+    /* 10. User Dump */
+    userDump: null,
+    /* 11. Users Dump */
+    usersDump: null,
 };

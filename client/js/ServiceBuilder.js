@@ -122,18 +122,16 @@ var ServiceBuilder = {
                 dict.push(k);
             }
 
-            console.log("sending user dump");
-            console.log(dict);
+
             var json = {
                 request: 10,
                 data: {
                     properties: [ {
-                        name : user.name
-                    },
-                    {
-                        avatar : user.avatar.src
-                    }
-
+                            name : user.name
+                        },
+                        {
+                            avatar : user.avatar.src
+                        }
                     ]
                 }
             };

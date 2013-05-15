@@ -33,7 +33,7 @@ $(document).ready(function () {
             cs.send(ping);
         }, 20000);
 
-
+        console.log("Send user dump");
         cs.requests.sendUserDump();
     };
 
@@ -121,6 +121,8 @@ $(document).ready(function () {
         $(avatar).addClass("pyjs-avatar");
         $(avatar).attr("id", "avatar-" + name);
         pyjs.find(".pyjs-avatars").append(li);
+
+        cs.requests.getUsersDump();
     };
 
     /* A USER DISCONNECTS */
@@ -145,6 +147,27 @@ $(document).ready(function () {
         console.log("Service: Jump Slide");
         console.log("Number is current " + number);
         SlideShower.updateSlideNumber(number);
+    };
+
+    Services.userDump = function(user) {
+        console.log("Service: User Dump");
+    };
+
+    Services.usersDump = function(users) {
+        util.arrayEach(users, function(user) {
+            var name = user.name;
+            var url = user.properties[1].avatar;
+            $("#avatar-" + name).remove();
+
+            var li = $("<li></li>")
+            var avatar = new Image();
+            avatar.src = url;
+            avatar.title = name;
+            li.html(avatar);
+            $(avatar).addClass("pyjs-avatar");
+            $(avatar).attr("id", "avatar-" + name);
+            pyjs.find(".pyjs-avatars").append(li);
+        });
     };
 
     var sendMessage = function() {

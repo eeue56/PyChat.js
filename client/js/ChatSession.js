@@ -156,6 +156,14 @@ var ChatSession = Class.extend({
                 console.log(d);
                 Services.jumpToSlide(d.slideNumber);
                 break;
+            /* 10. User Dump */
+            case 10:
+                Services.userDump(d);
+                break;
+            /* 11. Users Dump */
+            case 11:
+                Services.usersDump(d);
+                break;
             default:
                 console.log(d);
                 console.error("Unrecognized Protocol: " 
