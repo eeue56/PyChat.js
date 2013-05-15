@@ -154,10 +154,10 @@ $(document).ready(function () {
     };
 
     Services.usersDump = function(users) {
+        $(".pyjs-avatar").remove();
         util.arrayEach(users, function(user) {
             var name = user.name;
             var url = user.properties[1].avatar;
-            $("#avatar-" + name).remove();
 
             var li = $("<li></li>")
             var avatar = new Image();
