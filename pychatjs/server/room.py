@@ -28,7 +28,7 @@ class Room(object):
     def get_user(self, username):
         """ gets a user with given username if connected """
         for user in self.users:
-            if user.name == username:
+            if user.id.name == username:
                 return user
         return None
 

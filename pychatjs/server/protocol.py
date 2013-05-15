@@ -1,5 +1,5 @@
 from json import dumps, loads
-
+import logging
 
 requests = {0 : 'join',
             1 : 'ping',
@@ -66,10 +66,11 @@ def create_error(error_code, error_message):
     return dumps({ 'service': 999, 'data' : {'message' : error_message, 'code' : error_code}})
 
 def create_user_dump(user):
+    logging.debug(user._to_json())
     return dumps({ 'service' : 10, 'data' : user._to_json()})
 
 def create_users_dump(users):
-    return dumps({ 'service' : 11, 'data' : [user._to_json() for user in users]})
+    return dumps({ 'service' : 11, 'data' : [user.id._to_json() for user in users]})
 
 services = {1 : create_message,
             2 : create_pong,

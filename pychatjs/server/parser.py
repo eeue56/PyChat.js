@@ -77,7 +77,7 @@ class Parser(object):
             username = data['username']
             for room in conn.possible_rooms:
                 if room.get_user(username) is not None:
-                    conn.write_message(create_user_dump(room.get_user(username)))
+                    conn.write_message(create_user_dump(room.get_user(username).id))
                     break
             else:
                 if username == conn.id.name:
@@ -92,8 +92,7 @@ class Parser(object):
                 conn.write_message(create_users_dump(room.get_users_connected))
 
         elif request_name == 'send_dump':
-            properties = data['properties']
-            conn.id._load_from_json(properties)
+            conn.id._load_from_json(data)
 
         elif request_name == 'next_slide':
             room = conn.get_room(data['room'])
